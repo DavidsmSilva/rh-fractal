@@ -189,4 +189,4 @@ Para soporte o consultas sobre el proyecto:
 
 ---
 
-**Nota**: El frontend Angular aún no ha sido creado. El proyecto actual incluye solo el backend Spring Boot con todas las entidades, repositorios, controladores y configuración necesarios.# rh-fractal
+**Nota**: El frontend Angular aún no ha sido creado. El proyecto actual incluye solo el backend Spring Boot con todas las entidades, repositorios, controladores y configuración necesarios.
