@@ -5,11 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arquitectura del Proyecto RH Fractal</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
@@ -19,7 +15,7 @@
             padding: 20px;
         }
         .container {
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
             background: white;
             border-radius: 20px;
@@ -32,20 +28,10 @@
             padding: 40px;
             text-align: center;
         }
-        header h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
-        }
-        header p {
-            font-size: 1.2em;
-            opacity: 0.9;
-        }
-        .content {
-            padding: 40px;
-        }
-        section {
-            margin-bottom: 40px;
-        }
+        header h1 { font-size: 2.5em; margin-bottom: 10px; }
+        header p { font-size: 1.2em; opacity: 0.9; }
+        .content { padding: 40px; }
+        section { margin-bottom: 40px; }
         h2 {
             color: #1B4332;
             font-size: 1.8em;
@@ -53,15 +39,11 @@
             padding-bottom: 10px;
             border-bottom: 3px solid #2E7D32;
         }
-        h3 {
-            color: #2E7D32;
-            font-size: 1.3em;
-            margin-top: 25px;
-            margin-bottom: 15px;
-        }
+        h3 { color: #2E7D32; font-size: 1.3em; margin-top: 25px; margin-bottom: 15px; }
+        h4 { color: #1B4332; font-size: 1.1em; margin-top: 20px; margin-bottom: 10px; }
         .tech-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
             gap: 15px;
             margin: 20px 0;
         }
@@ -88,82 +70,78 @@
             margin: 10px;
             font-weight: bold;
         }
-        .frontend-box {
-            background: linear-gradient(135deg, #FF6B6B, #FF8E53);
-            color: white;
-        }
-        .backend-box {
-            background: linear-gradient(135deg, #4ECDC4, #44A08D);
-            color: white;
-        }
-        .database-box {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-        }
-        .arrow {
-            font-size: 2em;
-            color: #666;
-            margin: 0 10px;
-        }
-        ul {
-            margin-left: 25px;
-            margin-bottom: 15px;
-        }
-        li {
-            margin-bottom: 8px;
-        }
+        .frontend-box { background: linear-gradient(135deg, #FF6B6B, #FF8E53); color: white; }
+        .backend-box { background: linear-gradient(135deg, #4ECDC4, #44A08D); color: white; }
+        .database-box { background: linear-gradient(135deg, #667eea, #764ba2); color: white; }
+        .arrow { font-size: 2em; color: #666; margin: 0 10px; }
+        ul { margin-left: 25px; margin-bottom: 15px; }
+        li { margin-bottom: 8px; }
         .folder-structure {
             background: #282c34;
             color: #abb2bf;
-            padding: 25px;
+            padding: 20px;
             border-radius: 10px;
             font-family: 'Courier New', monospace;
-            font-size: 0.9em;
+            font-size: 0.75em;
             overflow-x: auto;
+            white-space: pre;
         }
-        .folder-structure .folder {
-            color: #61afef;
+        .folder-structure .folder { color: #61afef; }
+        .folder-structure .file { color: #98c379; }
+        .folder-structure .comment { color: #5c6370; }
+        .highlight { background: #fff3cd; padding: 15px; border-radius: 8px; border-left: 4px solid #ffc107; margin: 20px 0; }
+        .info-box { background: #d1ecf1; padding: 15px; border-radius: 8px; border-left: 4px solid #17a2b8; margin: 20px 0; }
+        .warning-box { background: #f8d7da; padding: 15px; border-radius: 8px; border-left: 4px solid #dc3545; margin: 20px 0; }
+        .success-box { background: #d4edda; padding: 15px; border-radius: 8px; border-left: 4px solid #28a745; margin: 20px 0; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        th, td { padding: 12px; text-align: left; border-bottom: 1px solid #ddd; }
+        th { background: #1B4332; color: white; }
+        tr:hover { background: #f5f5f5; }
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: bold;
+            margin: 2px;
         }
-        .folder-structure .file {
-            color: #98c379;
-        }
-        .highlight {
-            background: #fff3cd;
-            padding: 15px;
-            border-radius: 8px;
-            border-left: 4px solid #ffc107;
+        .badge-primary { background: #007bff; color: white; }
+        .badge-success { background: #28a745; color: white; }
+        .badge-warning { background: #ffc107; color: #333; }
+        .badge-info { background: #17a2b8; color: white; }
+        .improvements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
             margin: 20px 0;
         }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-        }
-        th, td {
-            padding: 12px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-        th {
-            background: #1B4332;
-            color: white;
-        }
-        tr:hover {
-            background: #f5f5f5;
-        }
-        footer {
-            background: #1B4332;
-            color: white;
-            text-align: center;
+        .improvement-card {
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 12px;
             padding: 20px;
+            transition: transform 0.2s, box-shadow 0.2s;
         }
+        .improvement-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+        .improvement-card h4 { color: #1B4332; margin-top: 0; }
+        footer { background: #1B4332; color: white; text-align: center; padding: 20px; }
+        .two-column { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+        @media (max-width: 768px) { .two-column { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>🏢 Arquitectura del Proyecto</h1>
+            <h1>🏢 Arquitectura del Proyecto RH Fractal</h1>
             <p>Sistema de Recursos Humanos - Fractal Estrategias Sostenibles</p>
+            <div style="margin-top: 20px;">
+                <span class="badge badge-success">Backend: Spring Boot 3.2</span>
+                <span class="badge badge-primary">Frontend: Angular 18</span>
+                <span class="badge badge-info">DB: H2 Database</span>
+            </div>
         </header>
         
         <div class="content">
@@ -172,8 +150,8 @@
                 <p>El proyecto <strong>RH Fractal</strong> es un sistema integral de gestión de recursos humanos desarrollado con una arquitectura moderna de <strong>tres capas</strong> (Frontend, Backend, Base de Datos), utilizando tecnologías robustas, escalables y de alto rendimiento.</p>
                 
                 <div class="highlight">
-                    <h3 style="margin-top: 0;">🎯 Propósito del Sistema</h3>
-                    <p>Este sistema permite a <strong>Fractal Estrategias Sostenibles</strong> gestionar de manera eficiente todos los aspectos relacionados con la administración del talento humano, incluyendo:</p>
+                    <h3 style="margin-top:0;">🎯 Propósito del Sistema</h3>
+                    <p>Este sistema permite a <strong>Fractal Estrategias Sostenibles</strong> gestionar de manera eficiente:</p>
                     <ul>
                         <li>Control y registro de empleados</li>
                         <li>Gestión de departamentos y organigrama empresarial</li>
@@ -185,277 +163,271 @@
                 </div>
 
                 <h3>🖥️ Frontend - Angular 18</h3>
-                <p>La capa de presentación está construida con <strong>Angular 18</strong>, un framework moderno de desarrollo web creado por Google. Esta tecnología permite crear aplicaciones de una sola página (SPA) rápidas, responsivas y con una experiencia de usuario fluida.</p>
-                
-                <h4>Características principales del Frontend:</h4>
+                <p>La capa de presentación está construida con <strong>Angular 18</strong> utilizando standalone components.</p>
                 <ul>
-                    <li><strong>Arquitectura Component-Based:</strong> La aplicación está modularizada en componentes reutilizables (empleados, departamentos, nóminas, beneficios, vacaciones, inventario)</li>
-                    <li><strong>TypeScript:</strong> Lenguaje de programación con tipado estático que proporciona mayor robustez y detección temprana de errores</li>
-                    <li><strong>RxJS:</strong> Programación reactiva para manejo eficiente de eventos y flujos de datos asíncronos</li>
-                    <li><strong>HTML5/CSS3:</strong> Tecnologías modernas para crear interfaces atractivas y responsivas</li>
-                    <li><strong>Enrutamiento:</strong> Navegación fluida entre las diferentes secciones del sistema</li>
-                    <li><strong>Proxy Configuration:</strong> Configuración de proxy para conectar con el backend de forma transparente</li>
+                    <li><strong>Standalone Components:</strong> Arquitectura moderna sin NgModules</li>
+                    <li><strong>TypeScript:</strong> Tipado estático para mayor robustez</li>
+                    <li><strong>RxJS:</strong> Programación reactiva para flujos asíncronos</li>
+                    <li><strong>Routing:</strong> Navegación fluida entre secciones</li>
+                    <li><strong>HTTP Client:</strong> Comunicación con API REST</li>
+                    <li><strong>Testing:</strong> Jasmine/Karma y Cypress configurados</li>
+                    <li><strong>Testing Agent:</strong> Agente智能化 para generación automática de tests</li>
                 </ul>
-                <p>El frontend corre en el <strong>puerto 4200</strong> y se conecta al backend mediante llamadas HTTP a la API REST.</p>
+                <p>El frontend corre en el <strong>puerto 4200</strong>.</p>
 
-                <h3>⚙️ Backend - Spring Boot</h3>
-                <p>La capa de lógica de negocio está desarrollada con <strong>Spring Boot 3.2</strong>, un framework Java que simplifica la creación de aplicaciones empresariales. Spring Boot proporciona un servidor embebido (Tomcat) y una configuración automática que permite poner en marcha el servidor de manera rápida y eficiente.</p>
-                
-                <h4>Características principales del Backend:</h4>
+                <h3>⚙️ Backend - Spring Boot 3.2</h3>
+                <p>La capa de lógica de negocio está desarrollada con <strong>Spring Boot 3.2</strong>.</p>
                 <ul>
-                    <li><strong>Spring Data JPA:</strong> Framework para acceso a datos que simplifica la interacción con la base de datos mediante repositorios</li>
-                    <li><strong>Hibernate 6.3:</strong> Implementación de JPA que realiza el mapeo objeto-relacional (ORM), convirtiendo las entidades Java en tablas de MySQL</li>
-                    <li><strong>Spring Security:</strong> Módulo de seguridad que maneja autenticación y autorización de usuarios</li>
-                    <li><strong>API REST:</strong> Servicios web RESTful que exponen endpoints en formato JSON para la comunicación con el frontend</li>
-                    <li><strong>CORS configurado:</strong> Permite solicitudes cruzadas desde el frontend (localhost:4200) hacia el backend</li>
-                    <li><strong>Java 17:</strong> Última versión LTS de Java con características modernas como records, switch expressions y pattern matching</li>
+                    <li><strong>Spring Data JPA:</strong> Acceso a datos con repositorios</li>
+                    <li><strong>Hibernate 6.3:</strong> ORM para mapeo objeto-relacional</li>
+                    <li><strong>Spring Security:</strong> Seguridad configurable</li>
+                    <li><strong>API REST:</strong> Endpoints JSON</li>
+                    <li><strong>CORS:</strong> Configurado para localhost:4200</li>
+                    <li><strong>Java 17:</strong> Características modernas</li>
+                    <li><strong>H2 Console:</strong> Consola web en /h2-console</li>
                 </ul>
-                <p>El backend corre en el <strong>puerto 8080</strong> y expone 6 módulos principales de API REST para todas las operaciones CRUD.</p>
+                <p>El backend corre en el <strong>puerto 8082</strong>.</p>
 
-                <h3>🗄️ Base de Datos - MySQL</h3>
-                <p>El almacenamiento persistente se realiza en <strong>MySQL</strong>, uno de los sistemas de gestión de bases de datos relacionales más populares y confiables del mundo. La base de datos <code>rh_fractal</code> contiene 6 tablas principales que almacenan toda la información del sistema de recursos humanos.</p>
-                
-                <h4>Ventajas de esta arquitectura:</h4>
-                <ul>
-                    <li><strong>Escalabilidad:</strong> Frontend y Backend separados permiten escalar cada capa de forma independiente</li>
-                    <li><strong>Mantenibilidad:</strong> Código organizado en capas con responsabilidades bien definidas</li>
-                    <li><strong>Flexibilidad:</strong> El backend API REST permite consumir los mismos endpoints desde diferentes clientes (web, mobile)</li>
-                    <li><strong>Seguridad:</strong> Spring Security proporciona protección robusta contra amenazas comunes</li>
-                    <li><strong>Performance:</strong> MySQL optimizado para consultas rápidas y Hibernate con caché de segundo nivel</li>
-                </ul>
+                <h3>🗄️ Base de Datos - H2 (Desarrollo)</h3>
+                <p>Almacenamiento en <strong>H2 Database</strong>, base de datos en memoria para desarrollo.</p>
+                <div class="info-box">
+                    <strong>📝 Configuración Actual:</strong>
+                    <ul>
+                        <li>URL: jdbc:h2:mem:rh_fractal</li>
+                        <li>Usuario: sa</li>
+                        <li>Consola: http://localhost:8082/h2-console</li>
+                    </ul>
+                </div>
             </section>
 
             <section>
-                <h2>🖥️ Tecnologías Utilizadas</h2>
-                
-                <h3>Backend</h3>
-                <div class="tech-grid">
-                    <div class="tech-card">Java 17</div>
-                    <div class="tech-card">Spring Boot 3.2</div>
-                    <div class="tech-card">Spring Data JPA</div>
-                    <div class="tech-card">Hibernate 6.3</div>
-                    <div class="tech-card">MySQL</div>
-                    <div class="tech-card">Spring Security</div>
-                </div>
-
-                <h3>Frontend</h3>
-                <div class="tech-grid">
-                    <div class="tech-card">Angular 18</div>
-                    <div class="tech-card">TypeScript</div>
-                    <div class="tech-card">HTML5/CSS3</div>
-                    <div class="tech-card">RxJS</div>
+                <h2>🛠️ Tecnologías Utilizadas</h2>
+                <div class="two-column">
+                    <div>
+                        <h3>Backend</h3>
+                        <div class="tech-grid">
+                            <div class="tech-card">Java 17</div>
+                            <div class="tech-card">Spring Boot 3.2</div>
+                            <div class="tech-card">Spring Data JPA</div>
+                            <div class="tech-card">Hibernate 6.3</div>
+                            <div class="tech-card">H2 Database</div>
+                            <div class="tech-card">Spring Security</div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3>Frontend</h3>
+                        <div class="tech-grid">
+                            <div class="tech-card">Angular 18</div>
+                            <div class="tech-card">TypeScript</div>
+                            <div class="tech-card">HTML5/CSS3</div>
+                            <div class="tech-card">RxJS</div>
+                            <div class="tech-card">Jasmine/Karma</div>
+                            <div class="tech-card">Cypress</div>
+                        </div>
+                    </div>
                 </div>
             </section>
 
             <section>
                 <h2>🔄 Arquitectura del Sistema</h2>
                 <div class="architecture-diagram">
-                    <div class="diagram-box frontend-box">
-                        🖥️ Frontend<br>Angular 18<br>(Puerto 4200)
-                    </div>
+                    <div class="diagram-box frontend-box">🖥️ Frontend<br>Angular 18<br>(4200)</div>
                     <span class="arrow">⬌</span>
-                    <div class="diagram-box backend-box">
-                        ⚙️ Backend<br>Spring Boot<br>(Puerto 8080)
-                    </div>
+                    <div class="diagram-box backend-box">⚙️ Backend<br>Spring Boot<br>(8082)</div>
                     <span class="arrow">⬌</span>
-                    <div class="diagram-box database-box">
-                        🗄️ Base de Datos<br>MySQL<br>(Puerto 3306)
-                    </div>
+                    <div class="diagram-box database-box">🗄️ H2 DB<br>Memoria</div>
                 </div>
-
                 <table>
-                    <tr>
-                        <th>Componente</th>
-                        <th>Tecnología</th>
-                        <th>Función</th>
-                    </tr>
-                    <tr>
-                        <td><strong>Frontend</strong></td>
-                        <td>Angular 18</td>
-                        <td>Interfaz de usuario, consume API REST</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Backend</strong></td>
-                        <td>Spring Boot</td>
-                        <td>Lógica de negocio, API REST</td>
-                    </tr>
-                    <tr>
-                        <td><strong>ORM</strong></td>
-                        <td>JPA/Hibernate</td>
-                        <td>Mappeo objeto-relacional</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Base de Datos</strong></td>
-                        <td>MySQL</td>
-                        <td>Almacenamiento persistente</td>
-                    </tr>
+                    <tr><th>Componente</th><th>Tecnología</th><th>Puerto</th><th>Función</th></tr>
+                    <tr><td>Frontend</td><td>Angular 18</td><td>4200</td><td>Interfaz de usuario</td></tr>
+                    <tr><td>Backend</td><td>Spring Boot</td><td>8082</td><td>Lógica de negocio</td></tr>
+                    <tr><td>ORM</td><td>JPA/Hibernate</td><td>-</td><td>Mapeo objeto-relacional</td></tr>
+                    <tr><td>Base de Datos</td><td>H2</td><td>Memoria</td><td>Almacenamiento</td></tr>
                 </table>
             </section>
 
             <section>
                 <h2>📁 Estructura del Proyecto</h2>
-                
                 <h3>Backend (Spring Boot)</h3>
-                <div class="folder-structure">
-<span class="folder">rh-fractal-backend/</span>
+                <div class="folder-structure"><span class="folder">rh-fractal-backend/</span>
 ├── <span class="folder">src/main/java/com/fractal/rh/</span>
-│   ├── <span class="folder">config/</span>          <span class="file"># Configuraciones (CORS, Security, JPA)</span>
-│   ├── <span class="folder">controller/</span>       <span class="file"># Controladores REST (API endpoints)</span>
-│   ├── <span class="folder">entity/</span>          <span class="file"># Entidades JPA (Tablas de BD)</span>
-│   ├── <span class="folder">repository/</span>       <span class="file"># Repositorios JPA (DAO)</span>
-│   └── <span class="folder">RhFractalApplication.java</span>
+│   ├── <span class="file">RhFractalApplication.java</span> <span class="comment"># Clase principal</span>
+│   ├── <span class="folder">config/</span> <span class="comment"># Configuraciones</span>
+│   │   ├── <span class="file">CorsConfig.java</span>
+│   │   ├── <span class="file">SecurityConfig.java</span>
+│   │   └── <span class="file">DataLoader.java</span>
+│   ├── <span class="folder">entity/</span> <span class="comment"># Entidades JPA</span>
+│   │   ├── <span class="file">Empleado.java</span>
+│   │   ├── <span class="file">Departamento.java</span>
+│   │   ├── <span class="file">Vacacion.java</span>
+│   │   ├── <span class="file">Beneficio.java</span>
+│   │   ├── <span class="file">Nomina.java</span>
+│   │   └── <span class="file">InventarioEquipo.java</span>
+│   ├── <span class="folder">repository/</span> <span class="comment"># Repositorios</span>
+│   └── <span class="folder">controller/</span> <span class="comment"># Controladores REST</span>
 ├── <span class="folder">src/main/resources/</span>
 │   └── <span class="file">application.properties</span>
-└── <span class="file">build.gradle</span>
-                </div>
+└── <span class="file">build.gradle</span></div>
 
-                <h3>Frontend (Angular)</h3>
-                <div class="folder-structure">
-<span class="folder">rh-fractal-frontend/</span>
+                <h3>Frontend (Angular 18)</h3>
+                <div class="folder-structure"><span class="folder">rh-fractal-frontend/</span>
 ├── <span class="folder">src/app/</span>
-│   ├── <span class="folder">pages/</span>           <span class="file"># Componentes de páginas</span>
+│   ├── <span class="file">app.component.ts</span>
+│   ├── <span class="folder">routes/</span> <span class="file">app.routes.ts</span>
+│   ├── <span class="folder">pages/</span> <span class="comment"># Componentes</span>
 │   │   ├── <span class="folder">empleados/</span>
 │   │   ├── <span class="folder">departamentos/</span>
 │   │   ├── <span class="folder">nominas/</span>
 │   │   ├── <span class="folder">beneficios/</span>
 │   │   ├── <span class="folder">vacaciones/</span>
 │   │   └── <span class="folder">inventario/</span>
-│   ├── <span class="folder">routes/</span>         <span class="file"># Rutas de la aplicación</span>
-│   └── <span class="folder">app.component.ts</span>
-├── <span class="file">proxy.conf.json</span>    <span class="file"># Configuración de proxy</span>
-└── <span class="file">package.json</span>
-                </div>
+│   └── <span class="folder">agents/testing/</span>
+├── <span class="folder">cypress/</span> <span class="comment"># Tests E2E</span>
+├── <span class="file">proxy.conf.json</span>
+└── <span class="file">package.json</span></div>
             </section>
 
             <section>
                 <h2>🔌 Endpoints de la API</h2>
                 <table>
-                    <tr>
-                        <th>Módulo</th>
-                        <th>Endpoint</th>
-                        <th>Métodos</th>
-                    </tr>
-                    <tr>
-                        <td>Empleados</td>
-                        <td>/api/empleados</td>
-                        <td>GET, POST, PUT, DELETE</td>
-                    </tr>
-                    <tr>
-                        <td>Departamentos</td>
-                        <td>/api/departamentos</td>
-                        <td>GET, POST, PUT, DELETE</td>
-                    </tr>
-                    <tr>
-                        <td>Nóminas</td>
-                        <td>/api/nominas</td>
-                        <td>GET, POST, PUT, DELETE</td>
-                    </tr>
-                    <tr>
-                        <td>Beneficios</td>
-                        <td>/api/beneficios</td>
-                        <td>GET, POST, PUT, DELETE</td>
-                    </tr>
-                    <tr>
-                        <td>Vacaciones</td>
-                        <td>/api/vacaciones</td>
-                        <td>GET, POST, PUT, DELETE</td>
-                    </tr>
-                    <tr>
-                        <td>Inventario</td>
-                        <td>/api/inventario-equipos</td>
-                        <td>GET, POST, PUT, DELETE</td>
-                    </tr>
+                    <tr><th>Módulo</th><th>Endpoint</th><th>Métodos</th></tr>
+                    <tr><td>Empleados</td><td>/api/empleados</td><td>GET, POST, PUT, DELETE</td></tr>
+                    <tr><td>Departamentos</td><td>/api/departamentos</td><td>GET, POST, PUT, DELETE</td></tr>
+                    <tr><td>Nóminas</td><td>/api/nominas</td><td>GET, POST, PUT, DELETE</td></tr>
+                    <tr><td>Beneficios</td><td>/api/beneficios</td><td>GET, POST, PUT, DELETE</td></tr>
+                    <tr><td>Vacaciones</td><td>/api/vacaciones</td><td>GET, POST, PUT, DELETE</td></tr>
+                    <tr><td>Inventario</td><td>/api/inventario</td><td>GET, POST, PUT, DELETE</td></tr>
                 </table>
             </section>
 
             <section>
                 <h2>🚀 Cómo Ejecutar el Proyecto</h2>
-                
-                <h3>Backend</h3>
-                <ul>
-                    <li>Asegúrate de tener <strong>MySQL</strong> ejecutándose en el puerto 3306</li>
-                    <li>La base de datos se llama <code>rh_fractal</code></li>
-                    <li>Ejecuta: <code>.\gradlew.bat bootRun</code> desde la carpeta <code>rh-fractal-backend</code></li>
-                    <li>El backend correrá en: <strong>http://localhost:8080</strong></li>
-                </ul>
-
-                <h3>Frontend</h3>
-                <ul>
-                    <li>Ejecuta: <code>npm start</code> desde la carpeta <code>rh-fractal-frontend</code></li>
-                    <li>El frontend correrá en: <strong>http://localhost:4200</strong></li>
-                </ul>
-
-                <div class="highlight">
-                    <strong>⚠️ Importante:</strong> El frontend usa un proxy para comunicarse con el backend. La configuración está en <code>proxy.conf.json</code>. Esto permite que las peticiones a <code>/api/*</code> se redirijan automáticamente a <code>localhost:8080</code>.
+                <div class="two-column">
+                    <div>
+                        <h3>Backend</h3>
+                        <ul>
+                            <li>No requiere BD (usa H2)</li>
+                            <li>Ejecuta: <code>.\gradlew.bat bootRun</code></li>
+                            <li>Backend: <strong>http://localhost:8082</strong></li>
+                            <li>Console H2: <strong>http://localhost:8082/h2-console</strong></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3>Frontend</h3>
+                        <ul>
+                            <li>Ejecuta: <code>npm install</code></li>
+                            <li>Luego: <code>npm start</code></li>
+                            <li>Frontend: <strong>http://localhost:4200</strong></li>
+                        </ul>
+                    </div>
                 </div>
             </section>
 
             <section>
                 <h2>📊 Entidades de la Base de Datos</h2>
                 <table>
-                    <tr>
-                        <th>Entidad</th>
-                        <th>Tabla</th>
-                        <th>Descripción</th>
-                    </tr>
-                    <tr>
-                        <td>Empleado</td>
-                        <td>empleados</td>
-                        <td>Información de los empleados</td>
-                    </tr>
-                    <tr>
-                        <td>Departamento</td>
-                        <td>departamentos</td>
-                        <td>Departamentos de la empresa</td>
-                    </tr>
-                    <tr>
-                        <td>Nomina</td>
-                        <td>nominas</td>
-                        <td>Gestión de nóminas</td>
-                    </tr>
-                    <tr>
-                        <td>Beneficio</td>
-                        <td>beneficios</td>
-                        <td>Beneficios para empleados</td>
-                    </tr>
-                    <tr>
-                        <td>Vacacion</td>
-                        <td>vacaciones</td>
-                        <td>Control de vacaciones</td>
-                    </tr>
-                    <tr>
-                        <td>InventarioEquipo</td>
-                        <td>inventario_equipos</td>
-                        <td>Inventario de equipos</td>
-                    </tr>
+                    <tr><th>Entidad</th><th>Tabla</th><th>Descripción</th></tr>
+                    <tr><td>Empleado</td><td>empleados</td><td>Información de empleados</td></tr>
+                    <tr><td>Departamento</td><td>departamentos</td><td>Departamentos</td></tr>
+                    <tr><td>Nomina</td><td>nominas</td><td>Gestión de nóminas</td></tr>
+                    <tr><td>Beneficio</td><td>beneficios</td><td>Beneficios</td></tr>
+                    <tr><td>Vacacion</td><td>vacaciones</td><td>Control de vacaciones</td></tr>
+                    <tr><td>InventarioEquipo</td><td>inventario_equipos</td><td>Equipos</td></tr>
                 </table>
+            </section>
+
+            <section>
+                <h2>🧪 Sistema de Testing</h2>
+                <ul>
+                    <li><strong>40 tests unitarios</strong> con Jasmine/Karma</li>
+                    <li><strong>Tests E2E</strong> con Cypress</li>
+                    <li><strong>Testing Agent</strong> para generación automática de tests</li>
+                </ul>
+                <div class="info-box">
+                    <strong>Comandos:</strong><br>
+                    - Tests unitarios: <code>npm test</code><br>
+                    - Tests E2E: <code>npm run e2e</code>
+                </div>
             </section>
 
             <section>
                 <h2>🔐 Seguridad</h2>
                 <ul>
-                    <li><strong>Spring Security</strong> maneja la autenticación y autorización</li>
-                    <li><strong>CORS</strong> configurado para permitir solicitudes desde Angular (localhost:4200)</li>
-                    <li><strong>BCrypt</strong> para encriptación de contraseñas</li>
-                    <li>Todos los endpoints de API están configurados como <code>permitAll()</code> para desarrollo</li>
+                    <li><strong>Spring Security:</strong> Autenticación y autorización</li>
+                    <li><strong>CORS:</strong> Configurado para localhost:4200</li>
+                    <li><strong>CSRF:</strong> Deshabilitado para desarrollo</li>
+                    <li><strong>BCrypt:</strong> Disponible para contraseñas</li>
+                    <li>Endpoints: <code>permitAll()</code> para desarrollo</li>
                 </ul>
             </section>
 
             <section>
+                <h2>📈 Mejoras Propuestas</h2>
+                <div class="improvements-grid">
+                    <div class="improvement-card">
+                        <span class="badge badge-warning">Prioridad: Alta</span>
+                        <h4>🔧 Servicios Angular</h4>
+                        <p>Crear servicios dedicados (EmpleadoService, etc.) para separar lógica HTTP.</p>
+                    </div>
+                    <div class="improvement-card">
+                        <span class="badge badge-warning">Prioridad: Alta</span>
+                        <h4>📦 Modelos Compartidos</h4>
+                        <p>Crear módulo <code>src/app/models/</code> con interfaces TypeScript.</p>
+                    </div>
+                    <div class="improvement-card">
+                        <span class="badge badge-info">Prioridad: Media</span>
+                        <h4>🔗 Relaciones JPA</h4>
+                        <p>Implementar @OneToMany y @ManyToOne entre entidades.</p>
+                    </div>
+                    <div class="improvement-card">
+                        <span class="badge badge-info">Prioridad: Media</span>
+                        <h4>✅ Validación Reactive Forms</h4>
+                        <p>Implementar Reactive Forms con validaciones.</p>
+                    </div>
+                    <div class="improvement-card">
+                        <span class="badge badge-info">Prioridad: Media</span>
+                        <h4>🔑 Autenticación JWT</h4>
+                        <p>Implementar login con tokens JWT.</p>
+                    </div>
+                    <div class="improvement-card">
+                        <span class="badge badge-success">Prioridad: Baja</span>
+                        <h4>🗄️ Migración MySQL</h4>
+                        <p>Migrar de H2 a MySQL/PostgreSQL.</p>
+                    </div>
+                    <div class="improvement-card">
+                        <span class="badge badge-success">Prioridad: Baja</span>
+                        <h4>📚 Swagger API</h4>
+                        <p>Documentación automática con Swagger.</p>
+                    </div>
+                    <div class="improvement-card">
+                        <span class="badge badge-success">Prioridad: Baja</span>
+                        <h4>🎨 Mejoras UX</h4>
+                        <p>Spinners, manejo de errores, estados.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section>
                 <h2>✅ Conclusión</h2>
-                <p>Este proyecto utiliza una arquitectura moderna y escalable:</p>
+                <p>Arquitectura moderna y escalable:</p>
                 <ul>
-                    <li><strong>Separación de responsabilidades:</strong> Frontend y Backend completamente separados</li>
-                    <li><strong>API REST:</strong> Comunicación mediante JSON</li>
-                    <li><strong>ORM:</strong> Manejo de base de datos orientado a objetos</li>
-                    <li><strong>TypeScript:</strong> Tipado estático en el frontend para mayor robustez</li>
-                    <li><strong>Component-based:</strong> Arquitectura modular y reutilizable en Angular</li>
+                    <li><strong>Separación de responsabilidades:</strong> Capas separadas</li>
+                    <li><strong>API REST:</strong> Comunicación JSON</li>
+                    <li><strong>ORM:</strong> Manejo de BD orientado a objetos</li>
+                    <li><strong>TypeScript:</strong> Tipado estático</li>
+                    <li><strong>Standalone Components:</strong> Angular moderno</li>
+                    <li><strong>Testing:</strong> Jasmine/Karma + Cypress</li>
+                    <li><strong>H2 Database:</strong> Desarrollo rápido</li>
                 </ul>
+                <div class="success-box" style="margin-top:20px;">
+                    <strong>✅ Estado:</strong> Proyecto funcional con 40 tests, datos de prueba cargados.
+                </div>
             </section>
         </div>
 
         <footer>
             <p>📅 Proyecto desarrollado en 2026 | Fractal Estrategias Sostenibles</p>
+            <p>Última actualización: Febrero 2026</p>
         </footer>
     </div>
 </body>

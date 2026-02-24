@@ -1,0 +1,46 @@
+{
+  "empleados": [
+    {
+      "id": 1,
+      "nombre": "Juan",
+      "apellido": "Perez",
+      "email": "juan.perez@empresa.com",
+      "numeroEmpleado": "EMP001",
+      "cargo": "Desarrollador",
+      "departamento": "Tecnología",
+      "salario": 5000000,
+      "estado": "ACTIVO",
+      "telefonoContacto": "3001234567",
+      "fechaContratacion": "2023-01-15"
+    },
+    {
+      "id": 2,
+      "nombre": "Maria",
+      "apellido": "Garcia",
+      "email": "maria.garcia@empresa.com",
+      "numeroEmpleado": "EMP002",
+      "cargo": "Diseñadora",
+      "departamento": "Mercadeo",
+      "salario": 4500000,
+      "estado": "ACTIVO",
+      "telefonoContacto": "3009876543",
+      "fechaContratacion": "2023-03-20"
+    }
+  ],
+  "departamentos": [
+    { "id": 1, "nombre": "Tecnología", "descripcion": "Desarrollo de software" },
+    { "id": 2, "nombre": "Recursos Humanos", "descripcion": "Gestión de personal" }
+  ],
+  "vacaciones": [
+    { "id": 1, "empleadoId": 1, "diasDisponibles": 15, "diasTomados": 5 }
+  ],
+  "beneficios": [
+    { "id": 1, "empleadoId": 1, "tipo": "Salud", "valor": 800000 }
+  ],
+  "inventario": [
+    { "id": 1, "nombre": "Laptop Dell", "cantidad": 5, "estado": "disponible" }
+  ],
+  "nominas": [
+    { "id": 1, "empleadoId": 1, "salario": 5000000, "fechaPago": "2024-01-31" }
+  ]
+}

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 interface Empleado {
   id?: number;
@@ -110,7 +111,7 @@ interface Empleado {
           </div>
           <div class="card-footer">
             <button class="card-action card-action-secondary" (click)="eliminarEmpleado(emp.id!)">Eliminar</button>
-            <button class="card-action card-action-primary">Ver Perfil</button>
+            <button class="card-action card-action-primary" (click)="verPerfilEmpleado(emp)">Ver Perfil</button>
           </div>
         </div>
       </div>
@@ -324,7 +325,7 @@ export class EmpleadosComponent implements OnInit {
     fechaContratacion: new Date().toISOString().split('T')[0]
   };
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   ngOnInit() {
     this.cargarEmpleados();
@@ -415,5 +416,14 @@ export class EmpleadosComponent implements OnInit {
         }
       });
     }
+  }
+
+  // Nueva: ver perfil de empleado
+  verPerfilEmpleado(emp: Empleado) {
+    if (!emp || !emp.id) {
+      alert('Empleado sin ID');
+      return;
+    }
+    this.router.navigate(['/empleados', emp.id]);
   }
 }

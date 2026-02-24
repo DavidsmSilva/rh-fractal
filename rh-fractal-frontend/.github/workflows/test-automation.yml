@@ -1,0 +1,81 @@
+name: CI - Test Automation
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+
+jobs:
+  test:
+    name: Run Tests
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18.x, 20.x]
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+        cache-dependency-path: rh-fractal-frontend/package-lock.json
+
+    - name: Install dependencies
+      run: |
+        cd rh-fractal-frontend
+        npm ci
+
+    - name: Run unit tests
+      run: |
+        cd rh-fractal-frontend
+        npm test -- --watch=false --browsers=ChromeHeadless
+
+    - name: Run tests with coverage
+      run: |
+        cd rh-fractal-frontend
+        npm test -- --watch=false --browsers=ChromeHeadless --code-coverage
+
+    - name: Upload coverage reports
+      uses: codecov/codecov-action@v3
+      with:
+        files: ./rh-fractal-frontend/coverage/lcov.info
+        flags: unittests
+        name: codecov-umbrella
+
+  build:
+    name: Build Application
+    runs-on: ubuntu-latest
+    needs: test
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: 20.x
+        cache: 'npm'
+        cache-dependency-path: rh-fractal-frontend/package-lock.json
+
+    - name: Install dependencies
+      run: |
+        cd rh-fractal-frontend
+        npm ci
+
+    - name: Build application
+      run: |
+        cd rh-fractal-frontend
+        npm run build
+
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: dist
+        path: rh-fractal-frontend/dist/
