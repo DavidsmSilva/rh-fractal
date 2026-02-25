@@ -3,6 +3,14 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 
+interface Empleado {
+  id?: number;
+  nombre: string;
+  apellido: string;
+  departamento: string;
+  estado: string;
+}
+
 interface Departamento {
   id?: number;
   nombre: string;
@@ -90,7 +98,7 @@ interface Departamento {
             <p>
               <span class="card-icon">👥</span>
               <span class="card-label">Empleados:</span>
-              <span class="card-value">{{ dept.numeroEmpleados }}</span>
+              <span class="card-value">{{ getEmpleadosPorDepartamento(dept.nombre) }}</span>
             </p>
           </div>
           <div class="card-footer">
@@ -172,6 +180,7 @@ interface Departamento {
 export class DepartamentosComponent implements OnInit {
   departamentos: Departamento[] = [];
   departamentosFiltrados: Departamento[] = [];
+  empleados: Empleado[] = [];
   busqueda: string = '';
   mostrarModal: boolean = false;
   
@@ -189,6 +198,7 @@ export class DepartamentosComponent implements OnInit {
 
   ngOnInit() {
     this.cargarDepartamentos();
+    this.cargarEmpleados();
   }
 
   cargarDepartamentos() {
@@ -201,6 +211,15 @@ export class DepartamentosComponent implements OnInit {
     });
   }
 
+  cargarEmpleados() {
+    this.http.get<Empleado[]>('/api/empleados').subscribe({
+      next: (data) => {
+        this.empleados = data;
+      },
+      error: (err) => console.error('Error cargando empleados:', err)
+    });
+  }
+
   filtrarDepartamentos() {
     const busquedaLower = this.busqueda.toLowerCase();
     this.departamentosFiltrados = this.departamentos.filter(dept =>
@@ -210,8 +229,14 @@ export class DepartamentosComponent implements OnInit {
     );
   }
 
+  getEmpleadosPorDepartamento(nombreDepto: string): number {
+    return this.empleados.filter(e => 
+      e.departamento === nombreDepto && e.estado === 'ACTIVO'
+    ).length;
+  }
+
   getTotalEmpleados(): number {
-    return this.departamentos.reduce((sum, dept) => sum + (dept.numeroEmpleados || 0), 0);
+    return this.empleados.filter(e => e.estado === 'ACTIVO').length;
   }
 
   getPresupuestoTotal(): number {
