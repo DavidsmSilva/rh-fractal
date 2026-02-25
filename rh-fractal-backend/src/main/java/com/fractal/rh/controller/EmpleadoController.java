@@ -2,20 +2,23 @@ package com.fractal.rh.controller;
 
 import com.fractal.rh.entity.Empleado;
 import com.fractal.rh.entity.Nomina;
-import com.fractal.rh.entity.InventarioEquipo;
+import com.fractal.rh.entity.Vacacion;
 import com.fractal.rh.entity.Departamento;
+import com.fractal.rh.entity.InventarioEquipo;
 import com.fractal.rh.repository.EmpleadoRepository;
 import com.fractal.rh.repository.NominaRepository;
-import com.fractal.rh.repository.InventarioEquipoRepository;
+import com.fractal.rh.repository.VacacionRepository;
 import com.fractal.rh.repository.DepartamentoRepository;
+import com.fractal.rh.repository.InventarioEquipoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
+import java.time.YearMonth;
 import java.util.List;
 import java.util.Optional;
-import java.util.Random;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/empleados")
@@ -28,10 +31,13 @@ public class EmpleadoController {
     private NominaRepository nominaRepository;
 
     @Autowired
-    private InventarioEquipoRepository inventarioEquipoRepository;
+    private VacacionRepository vacacionRepository;
 
     @Autowired
     private DepartamentoRepository departamentoRepository;
+
+    @Autowired
+    private InventarioEquipoRepository inventarioEquipoRepository;
 
     @GetMapping
     public List<Empleado> getAllEmpleados() {
@@ -47,36 +53,45 @@ public class EmpleadoController {
 
     @PostMapping
     public Empleado createEmpleado(@RequestBody Empleado empleado) {
-        String numeroEmpleado = generarCodigoEmpleado();
-        empleado.setNumeroEmpleado(numeroEmpleado);
+        // 1. Generar código de empleado automático
+        String codigoEmpleado = generarCodigoEmpleado();
+        empleado.setNumeroEmpleado(codigoEmpleado);
         
+        // 2. Si no tiene rol, asignar por defecto
         if (empleado.getRol() == null || empleado.getRol().isEmpty()) {
             empleado.setRol("Empleado");
         }
         
+        // 3. Guardar empleado
         Empleado empleadoGuardado = empleadoRepository.save(empleado);
         
+        // 4. Crear nómina automática
         crearNomina(empleadoGuardado);
         
+        // 5. Asignar laptop
         asignarLaptop(empleadoGuardado);
         
-        actualizarDepartamento(empleadoGuardado);
+        // 6. Crear vacaciones
+        crearVacaciones(empleadoGuardado);
+        
+        // 7. Actualizar departamento
+        actualizarDepartamento(empleado.getDepartamento(), empleado.getNombre() + " " + empleado.getApellido());
         
         return empleadoGuardado;
     }
 
     private String generarCodigoEmpleado() {
-        List<Empleado> todosEmpleados = empleadoRepository.findAll();
+        List<Empleado> empleados = empleadoRepository.findAll();
         int maxNumero = 0;
-        for (Empleado emp : todosEmpleados) {
+        for (Empleado emp : empleados) {
             if (emp.getNumeroEmpleado() != null && emp.getNumeroEmpleado().startsWith("EMP-")) {
                 try {
-                    int num = Integer.parseInt(emp.getNumeroEmpleado().replace("EMP-", ""));
-                    if (num > maxNumero) {
-                        maxNumero = num;
+                    int numero = Integer.parseInt(emp.getNumeroEmpleado().replace("EMP-", ""));
+                    if (numero > maxNumero) {
+                        maxNumero = numero;
                     }
                 } catch (NumberFormatException e) {
-                    // ignore
+                    // Ignorar
                 }
             }
         }
@@ -84,18 +99,17 @@ public class EmpleadoController {
     }
 
     private void crearNomina(Empleado empleado) {
-        double devengado = empleado.getSalario() != null ? empleado.getSalario() : 0.0;
+        String periodoActual = YearMonth.now().toString(); // 2026-02
+        double devengado = empleado.getSalario();
         double deducciones = devengado * 0.10;
         double neto = devengado - deducciones;
-        
-        String periodoActual = LocalDate.now().getYear() + "-" + String.format("%02d", LocalDate.now().getMonthValue());
         
         Nomina nomina = Nomina.builder()
                 .empleadoId(empleado.getId())
                 .nombreEmpleado(empleado.getNombre() + " " + empleado.getApellido())
                 .periodo(periodoActual)
                 .periodoNomina(periodoActual)
-                .fechaPago(LocalDate.now().plusDays(30))
+                .fechaPago(LocalDate.now())
                 .totalDevengado(devengado)
                 .totalDeducciones(deducciones)
                 .totalNeto(neto)
@@ -106,73 +120,70 @@ public class EmpleadoController {
     }
 
     private void asignarLaptop(Empleado empleado) {
-        List<InventarioEquipo> equiposDisponibles = inventarioEquipoRepository.findAll();
-        
-        Optional<InventarioEquipo> laptopDisponible = equiposDisponibles.stream()
+        // Buscar laptop disponible (sin dueno)
+        Optional<InventarioEquipo> laptopDisponible = inventarioEquipoRepository.findAll().stream()
                 .filter(eq -> eq.getDueno() == null || eq.getDueno().isEmpty() || eq.getDueno().equals("Varios"))
                 .findFirst();
         
+        InventarioEquipo laptop;
         if (laptopDisponible.isPresent()) {
-            InventarioEquipo equipo = laptopDisponible.get();
-            equipo.setDueno(empleado.getNombre() + " " + empleado.getApellido());
-            equipo.setUsuario(empleado.getEmail());
-            equipo.setCargo(empleado.getCargo());
-            equipo.setCuentaCorreo(empleado.getEmail());
-            inventarioEquipoRepository.save(equipo);
+            // Asignar laptop existente
+            laptop = laptopDisponible.get();
         } else {
-            String[] marcas = {"Dell", "HP", "Lenovo", "Apple"};
-            String[] modelos = {"Latitude 5400", "ProBook 450", "ThinkPad T14", "MacBook Air"};
-            Random random = new Random();
-            int idx = random.nextInt(marcas.length);
-            
-            InventarioEquipo nuevoEquipo = InventarioEquipo.builder()
+            // Crear laptop nueva
+            laptop = InventarioEquipo.builder()
                     .nombreEquipo("LAPTOP-" + empleado.getNumeroEmpleado())
-                    .dueno(empleado.getNombre() + " " + empleado.getApellido())
-                    .usuario(empleado.getEmail())
-                    .cargo(empleado.getCargo())
-                    .marca(marcas[idx])
-                    .modelo(modelos[idx])
+                    .marca("Dell")
+                    .modelo("Latitude 5400")
                     .procesador("Intel Core i5")
-                    .serialEquipo("GEN-" + System.currentTimeMillis())
+                    .serialEquipo("GEN-" + UUID.randomUUID().toString().substring(0, 8).toUpperCase())
                     .ubicacion("Oficina Principal")
-                    .cuentaCorreo(empleado.getEmail())
                     .licenciaOffice("Microsoft 365")
                     .windows("Windows 11 Pro")
-                    .usuarioWindows(empleado.getNombre().charAt(0) + "." + empleado.getApellido())
-                    .pinWindows(String.format("%04d", random.nextInt(10000)))
                     .fechaCompra(LocalDate.now())
-                    .valor(1000.0)
-                    .novedades("Equipo asignado automáticamente al nuevo empleado")
+                    .valor(1100.0)
                     .build();
-            
-            inventarioEquipoRepository.save(nuevoEquipo);
         }
+        
+        // Asignar al empleado
+        laptop.setDueno(empleado.getNombre() + " " + empleado.getApellido());
+        laptop.setUsuario(empleado.getEmail());
+        laptop.setCargo(empleado.getCargo());
+        laptop.setUsuarioWindows(empleado.getEmail().split("@")[0]);
+        laptop.setPinWindows("0000");
+        
+        inventarioEquipoRepository.save(laptop);
     }
 
-    private void actualizarDepartamento(Empleado empleado) {
-        if (empleado.getDepartamento() != null && !empleado.getDepartamento().isEmpty()) {
-            List<Departamento> departamentos = departamentoRepository.findAll();
-            Optional<Departamento> dept = departamentos.stream()
-                    .filter(d -> d.getNombre().equals(empleado.getDepartamento()))
-                    .findFirst();
-            
-            if (dept.isPresent()) {
-                Departamento departamento = dept.get();
-                String nombreCompleto = empleado.getNombre() + " " + empleado.getApellido();
-                
-                String listaActual = departamento.getListaEmpleados();
-                if (listaActual == null || listaActual.isEmpty()) {
-                    listaActual = nombreCompleto;
-                } else {
-                    listaActual = listaActual + ", " + nombreCompleto;
-                }
-                departamento.setListaEmpleados(listaActual);
-                
-                Integer numActual = departamento.getNumeroEmpleados();
-                departamento.setNumeroEmpleados((numActual != null ? numActual : 0) + 1);
-                
-                departamentoRepository.save(departamento);
+    private void crearVacaciones(Empleado empleado) {
+        Vacacion vacacion = Vacacion.builder()
+                .empleadoId(empleado.getId())
+                .nombreEmpleado(empleado.getNombre() + " " + empleado.getApellido())
+                .periodoVacacional(String.valueOf(LocalDate.now().getYear()))
+                .dias(0)
+                .diasTotales(25)
+                .estado("ACTIVO")
+                .fechaSolicitud(LocalDate.now())
+                .build();
+        
+        vacacionRepository.save(vacacion);
+    }
+
+    private void actualizarDepartamento(String nombreDepartamento, String nombreEmpleado) {
+        Optional<Departamento> depto = departamentoRepository.findAll().stream()
+                .filter(d -> d.getNombre().equals(nombreDepartamento))
+                .findFirst();
+        
+        if (depto.isPresent()) {
+            Departamento d = depto.get();
+            String listaActual = d.getListaEmpleados();
+            if (listaActual == null || listaActual.isEmpty()) {
+                d.setListaEmpleados(nombreEmpleado);
+            } else {
+                d.setListaEmpleados(listaActual + ", " + nombreEmpleado);
             }
+            d.setNumeroEmpleados((d.getNumeroEmpleados() != null ? d.getNumeroEmpleados() : 0) + 1);
+            departamentoRepository.save(d);
         }
     }
 

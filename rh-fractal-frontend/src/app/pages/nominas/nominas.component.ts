@@ -73,9 +73,13 @@ interface Nomina {
         <div class="nomina-card" *ngFor="let nom of nominasFiltradas">
           <div class="card-header">
             <h3>{{ nom.periodo }}</h3>
-            <span class="empleado-name">{{ nom.nombreEmpleado || 'Empleado #' + nom.empleadoId }}</span>
           </div>
           <div class="card-body">
+            <p>
+              <span class="card-icon">👤</span>
+              <span class="card-label">Empleado:</span>
+              <span class="card-value">{{ nom.nombreEmpleado }}</span>
+            </p>
             <p>
               <span class="card-icon">➕</span>
               <span class="card-label">Total Devengado:</span>

@@ -98,16 +98,30 @@ public class DataSeeder implements CommandLineRunner {
       empleadoRepository.save(e11);
       empleadoRepository.save(e12);
     } else if ("nominas".equals(table)) {
-      Nomina n1 = Nomina.builder().empleadoId(1L).periodo("2026-01").periodoNomina("2026-01").fechaPago(LocalDate.of(2026, 1, 31)).totalDevengado(85000.0).totalDeducciones(8500.0).totalNeto(76500.0).estado("PAGADO").build();
-      Nomina n2 = Nomina.builder().empleadoId(2L).periodo("2026-01").periodoNomina("2026-01").fechaPago(LocalDate.of(2026, 1, 31)).totalDevengado(75000.0).totalDeducciones(7500.0).totalNeto(67500.0).estado("PAGADO").build();
-      Nomina n3 = Nomina.builder().empleadoId(3L).periodo("2026-01").periodoNomina("2026-01").fechaPago(LocalDate.of(2026, 1, 31)).totalDevengado(48000.0).totalDeducciones(4800.0).totalNeto(43200.0).estado("PAGADO").build();
-      Nomina n4 = Nomina.builder().empleadoId(4L).periodo("2026-01").periodoNomina("2026-01").fechaPago(LocalDate.of(2026, 1, 31)).totalDevengado(55000.0).totalDeducciones(5500.0).totalNeto(49500.0).estado("PAGADO").build();
-      Nomina n5 = Nomina.builder().empleadoId(5L).periodo("2026-01").periodoNomina("2026-01").fechaPago(LocalDate.of(2026, 1, 31)).totalDevengado(45000.0).totalDeducciones(4500.0).totalNeto(40500.0).estado("PAGADO").build();
-      Nomina n6 = Nomina.builder().empleadoId(7L).periodo("2026-01").periodoNomina("2026-01").fechaPago(LocalDate.of(2026, 1, 31)).totalDevengado(62000.0).totalDeducciones(6200.0).totalNeto(55800.0).estado("PAGADO").build();
-      Nomina n7 = Nomina.builder().empleadoId(1L).periodo("2026-02").periodoNomina("2026-02").fechaPago(LocalDate.now()).totalDevengado(85000.0).totalDeducciones(8500.0).totalNeto(76500.0).estado("PENDIENTE").build();
-      Nomina n8 = Nomina.builder().empleadoId(2L).periodo("2026-02").periodoNomina("2026-02").fechaPago(LocalDate.now()).totalDevengado(75000.0).totalDeducciones(7500.0).totalNeto(67500.0).estado("PENDIENTE").build();
-      Nomina n9 = Nomina.builder().empleadoId(3L).periodo("2026-02").periodoNomina("2026-02").fechaPago(LocalDate.now()).totalDevengado(48000.0).totalDeducciones(4800.0).totalNeto(43200.0).estado("PENDIENTE").build();
-      Nomina n10 = Nomina.builder().empleadoId(4L).periodo("2026-02").periodoNomina("2026-02").fechaPago(LocalDate.now()).totalDevengado(55000.0).totalDeducciones(5500.0).totalNeto(49500.0).estado("PENDIENTE").build();
+      Nomina n1 = Nomina.builder().empleadoId(1L).nombreEmpleado("Miguel Soto").periodo("2026-01").periodoNomina("2026-01").fechaPago(LocalDate.of(2026, 1, 31)).totalDevengado(85000.0).totalDeducciones(8500.0).totalNeto(76500.0).estado("PAGADO").build();
+      Nomina n2 = Nomina.builder().empleadoId(2L).nombreEmpleado("Laura García").periodo("2026-01").periodoNomina("2026-01").fechaPago(LocalDate.of(2026, 1, 31)).totalDevengado(75000.0).totalDeducciones(7500.0).totalNeto(67500.0).estado("PAGADO").build();
+      Nomina n3 = Nomina.builder().empleadoId(3L).nombreEmpleado("Carlos Martínez").periodo("2026-01").periodoNomina("2026-01").fechaPago(LocalDate.of(2026, 1, 31)).totalDevengado(48000.0).totalDeducciones(4800.0).totalNeto(43200.0).estado("PAGADO").build();
+      Nomina n4 = Nomina.builder().empleadoId(4L).nombreEmpleado("Ana López").periodo("2026-01").periodoNomina("2026-01").fechaPago(LocalDate.of(2026, 1, 31)).totalDevengado(55000.0).totalDeducciones(5500.0).totalNeto(49500.0).estado("PAGADO").build();
+      Nomina n5 = Nomina.builder().empleadoId(5L).nombreEmpleado("Pedro Rodríguez").periodo("2026-01").periodoNomina("2026-01").fechaPago(LocalDate.of(2026, 1, 31)).totalDevengado(45000.0).totalDeducciones(4500.0).totalNeto(40500.0).estado("PAGADO").build();
+      Nomina n6 = Nomina.builder().empleadoId(7L).nombreEmpleado("Diego Torres").periodo("2026-01").periodoNomina("2026-01").fechaPago(LocalDate.of(2026, 1, 31)).totalDevengado(62000.0).totalDeducciones(6200.0).totalNeto(55800.0).estado("PAGADO").build();
+      Nomina n7 = Nomina.builder().empleadoId(6L).nombreEmpleado("Sofía Hernández").periodo("2026-01").periodoNomina("2026-01").fechaPago(LocalDate.of(2026, 1, 31)).totalDevengado(35000.0).totalDeducciones(3500.0).totalNeto(31500.0).estado("PAGADO").build();
+      Nomina n8 = Nomina.builder().empleadoId(8L).nombreEmpleado("María Castaño").periodo("2026-01").periodoNomina("2026-01").fechaPago(LocalDate.of(2026, 1, 31)).totalDevengado(42000.0).totalDeducciones(4200.0).totalNeto(37800.0).estado("PAGADO").build();
+      Nomina n9 = Nomina.builder().empleadoId(9L).nombreEmpleado("Javier Muñoz").periodo("2026-01").periodoNomina("2026-01").fechaPago(LocalDate.of(2026, 1, 31)).totalDevengado(40000.0).totalDeducciones(4000.0).totalNeto(36000.0).estado("PAGADO").build();
+      Nomina n10 = Nomina.builder().empleadoId(10L).nombreEmpleado("Carolina Ruiz").periodo("2026-01").periodoNomina("2026-01").fechaPago(LocalDate.of(2026, 1, 31)).totalDevengado(50000.0).totalDeducciones(5000.0).totalNeto(45000.0).estado("PAGADO").build();
+      Nomina n11 = Nomina.builder().empleadoId(11L).nombreEmpleado("Andrés Gómez").periodo("2026-01").periodoNomina("2026-01").fechaPago(LocalDate.of(2026, 1, 31)).totalDevengado(43000.0).totalDeducciones(4300.0).totalNeto(38700.0).estado("PAGADO").build();
+      Nomina n12 = Nomina.builder().empleadoId(12L).nombreEmpleado("Valentina Morales").periodo("2026-01").periodoNomina("2026-01").fechaPago(LocalDate.of(2026, 1, 31)).totalDevengado(32000.0).totalDeducciones(3200.0).totalNeto(28800.0).estado("PAGADO").build();
+      Nomina n13 = Nomina.builder().empleadoId(1L).nombreEmpleado("Miguel Soto").periodo("2026-02").periodoNomina("2026-02").fechaPago(LocalDate.now()).totalDevengado(85000.0).totalDeducciones(8500.0).totalNeto(76500.0).estado("PENDIENTE").build();
+      Nomina n14 = Nomina.builder().empleadoId(2L).nombreEmpleado("Laura García").periodo("2026-02").periodoNomina("2026-02").fechaPago(LocalDate.now()).totalDevengado(75000.0).totalDeducciones(7500.0).totalNeto(67500.0).estado("PENDIENTE").build();
+      Nomina n15 = Nomina.builder().empleadoId(3L).nombreEmpleado("Carlos Martínez").periodo("2026-02").periodoNomina("2026-02").fechaPago(LocalDate.now()).totalDevengado(48000.0).totalDeducciones(4800.0).totalNeto(43200.0).estado("PENDIENTE").build();
+      Nomina n16 = Nomina.builder().empleadoId(4L).nombreEmpleado("Ana López").periodo("2026-02").periodoNomina("2026-02").fechaPago(LocalDate.now()).totalDevengado(55000.0).totalDeducciones(5500.0).totalNeto(49500.0).estado("PENDIENTE").build();
+      Nomina n17 = Nomina.builder().empleadoId(5L).nombreEmpleado("Pedro Rodríguez").periodo("2026-02").periodoNomina("2026-02").fechaPago(LocalDate.now()).totalDevengado(45000.0).totalDeducciones(4500.0).totalNeto(40500.0).estado("PENDIENTE").build();
+      Nomina n18 = Nomina.builder().empleadoId(6L).nombreEmpleado("Sofía Hernández").periodo("2026-02").periodoNomina("2026-02").fechaPago(LocalDate.now()).totalDevengado(35000.0).totalDeducciones(3500.0).totalNeto(31500.0).estado("PENDIENTE").build();
+      Nomina n19 = Nomina.builder().empleadoId(7L).nombreEmpleado("Diego Torres").periodo("2026-02").periodoNomina("2026-02").fechaPago(LocalDate.now()).totalDevengado(62000.0).totalDeducciones(6200.0).totalNeto(55800.0).estado("PENDIENTE").build();
+      Nomina n20 = Nomina.builder().empleadoId(8L).nombreEmpleado("María Castaño").periodo("2026-02").periodoNomina("2026-02").fechaPago(LocalDate.now()).totalDevengado(42000.0).totalDeducciones(4200.0).totalNeto(37800.0).estado("PENDIENTE").build();
+      Nomina n21 = Nomina.builder().empleadoId(9L).nombreEmpleado("Javier Muñoz").periodo("2026-02").periodoNomina("2026-02").fechaPago(LocalDate.now()).totalDevengado(40000.0).totalDeducciones(4000.0).totalNeto(36000.0).estado("PENDIENTE").build();
+      Nomina n22 = Nomina.builder().empleadoId(10L).nombreEmpleado("Carolina Ruiz").periodo("2026-02").periodoNomina("2026-02").fechaPago(LocalDate.now()).totalDevengado(50000.0).totalDeducciones(5000.0).totalNeto(45000.0).estado("PENDIENTE").build();
+      Nomina n23 = Nomina.builder().empleadoId(11L).nombreEmpleado("Andrés Gómez").periodo("2026-02").periodoNomina("2026-02").fechaPago(LocalDate.now()).totalDevengado(43000.0).totalDeducciones(4300.0).totalNeto(38700.0).estado("PENDIENTE").build();
+      Nomina n24 = Nomina.builder().empleadoId(12L).nombreEmpleado("Valentina Morales").periodo("2026-02").periodoNomina("2026-02").fechaPago(LocalDate.now()).totalDevengado(32000.0).totalDeducciones(3200.0).totalNeto(28800.0).estado("PENDIENTE").build();
       nominaRepository.save(n1);
       nominaRepository.save(n2);
       nominaRepository.save(n3);
@@ -118,6 +132,20 @@ public class DataSeeder implements CommandLineRunner {
       nominaRepository.save(n8);
       nominaRepository.save(n9);
       nominaRepository.save(n10);
+      nominaRepository.save(n11);
+      nominaRepository.save(n12);
+      nominaRepository.save(n13);
+      nominaRepository.save(n14);
+      nominaRepository.save(n15);
+      nominaRepository.save(n16);
+      nominaRepository.save(n17);
+      nominaRepository.save(n18);
+      nominaRepository.save(n19);
+      nominaRepository.save(n20);
+      nominaRepository.save(n21);
+      nominaRepository.save(n22);
+      nominaRepository.save(n23);
+      nominaRepository.save(n24);
     } else if ("vacaciones".equals(table)) {
       Vacacion v1 = Vacacion.builder().empleadoId(1L).nombreEmpleado("Miguel Soto").periodoVacacional("2026-02").dias(5).diasTotales(25).estado("APROBADO").fechaSolicitud(LocalDate.of(2026, 1, 15)).build();
       Vacacion v2 = Vacacion.builder().empleadoId(2L).nombreEmpleado("Laura García").periodoVacacional("2026-03").dias(10).diasTotales(25).estado("APROBADO").fechaSolicitud(LocalDate.of(2026, 1, 20)).build();
@@ -129,6 +157,8 @@ public class DataSeeder implements CommandLineRunner {
       Vacacion v8 = Vacacion.builder().empleadoId(9L).nombreEmpleado("Javier Muñoz").periodoVacacional("2026-09").dias(5).diasTotales(25).estado("APROBADO").fechaSolicitud(LocalDate.of(2026, 2, 22)).build();
       Vacacion v9 = Vacacion.builder().empleadoId(10L).nombreEmpleado("Carolina Ruiz").periodoVacacional("2026-10").dias(7).diasTotales(25).estado("PENDIENTE").fechaSolicitud(LocalDate.of(2026, 2, 25)).build();
       Vacacion v10 = Vacacion.builder().empleadoId(11L).nombreEmpleado("Andrés Gómez").periodoVacacional("2026-11").dias(4).diasTotales(25).estado("APROBADO").fechaSolicitud(LocalDate.of(2026, 2, 28)).build();
+      Vacacion v11 = Vacacion.builder().empleadoId(6L).nombreEmpleado("Sofía Hernández").periodoVacacional("2026").dias(0).diasTotales(25).estado("ACTIVO").fechaSolicitud(LocalDate.now()).build();
+      Vacacion v12 = Vacacion.builder().empleadoId(12L).nombreEmpleado("Valentina Morales").periodoVacacional("2026").dias(0).diasTotales(25).estado("ACTIVO").fechaSolicitud(LocalDate.now()).build();
       vacacionRepository.save(v1);
       vacacionRepository.save(v2);
       vacacionRepository.save(v3);
@@ -139,6 +169,8 @@ public class DataSeeder implements CommandLineRunner {
       vacacionRepository.save(v8);
       vacacionRepository.save(v9);
       vacacionRepository.save(v10);
+      vacacionRepository.save(v11);
+      vacacionRepository.save(v12);
     } else if ("beneficios".equals(table)) {
       Beneficio b1 = Beneficio.builder().nombre("Seguro Salud").descripcion("Seguro de salud para empleados").valor(100.0).tipo("Salud").cobertura("Completa").valorMensual(50.0).fechaInicio(LocalDate.of(2024, 1, 1)).estado("ACTIVO").build();
       Beneficio b2 = Beneficio.builder().nombre("Bono Alimentación").descripcion("Bono mensual de alimentación").valor(200.0).tipo("Alimentación").cobertura("Completa").valorMensual(200.0).fechaInicio(LocalDate.of(2024, 1, 1)).estado("ACTIVO").build();
@@ -173,6 +205,7 @@ public class DataSeeder implements CommandLineRunner {
       InventarioEquipo eq10 = InventarioEquipo.builder().nombreEquipo("LAPTOP-ANDRES-01").dueno("Andrés Gómez").usuario("andres.gomez@example.com").cargo("Coordinador de Logística").marca("Lenovo").modelo("ThinkPad T14").procesador("Intel Core i5").serialEquipo("LENOVO-2024-8901").ubicacion("Bodega Principal").cuentaCorreo("andres.gomez@fractal.com").anydesk("012345678").licenciaOffice("Microsoft 365").windows("Windows 11 Pro").usuarioWindows("a.gomez").pinWindows("0123").fechaCompra(LocalDate.of(2024, 10, 10)).valor(1050.0).novedades("Equipo nuevo").build();
       InventarioEquipo eq11 = InventarioEquipo.builder().nombreEquipo("DESKTOP-VALENTINA-01").dueno("Valentina Morales").usuario("valentina.morales@example.com").cargo("Secretaria Ejecutiva").marca("Dell").modelo("OptiPlex 7000").procesador("Intel Core i5").serialEquipo("DELL-2024-3333").ubicacion("Oficina Principal - Piso 1").cuentaCorreo("valentina.morales@fractal.com").anydesk("111222333").licenciaOffice("Microsoft 365").windows("Windows 11 Pro").usuarioWindows("v.morales").pinWindows("1111").fechaCompra(LocalDate.of(2024, 11, 5)).valor(800.0).novedades("Equipo de escritorio para tareas administrativas").build();
       InventarioEquipo eq12 = InventarioEquipo.builder().nombreEquipo("MONITOR-ADIC-01").dueno("Varios").usuario("general@fractal.com").cargo("Administración").marca("Samsung").modelo("UltraWide 34").procesador("N/A").serialEquipo("SAM-2024-7777").ubicacion("Sala de Juntas").cuentaCorreo("").anydesk("").licenciaOffice("").windows("").usuarioWindows("").pinWindows("").fechaCompra(LocalDate.of(2024, 4, 1)).valor(450.0).novedades("Monitor panorámico para presentaciones").build();
+      InventarioEquipo eq13 = InventarioEquipo.builder().nombreEquipo("LAPTOP-SOFIA-01").dueno("Sofía Hernández").usuario("sofia.hernandez@example.com").cargo("Asistente Administrativa").marca("HP").modelo("ProBook 440").procesador("Intel Core i5").serialEquipo("HP-2024-5555").ubicacion("Oficina Principal - Piso 1").cuentaCorreo("sofia.hernandez@fractal.com").anydesk("555555555").licenciaOffice("Microsoft 365").windows("Windows 11 Pro").usuarioWindows("s.hernandez").pinWindows("5555").fechaCompra(LocalDate.of(2025, 1, 10)).valor(980.0).novedades("Equipo nuevo para nueva contratación").build();
       inventarioEquipoRepository.save(eq1);
       inventarioEquipoRepository.save(eq2);
       inventarioEquipoRepository.save(eq3);
@@ -185,6 +218,7 @@ public class DataSeeder implements CommandLineRunner {
       inventarioEquipoRepository.save(eq10);
       inventarioEquipoRepository.save(eq11);
       inventarioEquipoRepository.save(eq12);
+      inventarioEquipoRepository.save(eq13);
     }
   }
 }
