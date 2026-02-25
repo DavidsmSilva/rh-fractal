@@ -38,11 +38,9 @@ public class VacacionController {
                 .map(vacacion -> {
                     vacacion.setEmpleadoId(vacacionDetails.getEmpleadoId());
                     vacacion.setNombreEmpleado(vacacionDetails.getNombreEmpleado());
-                    vacacion.setPeriodoVacacional(vacacionDetails.getPeriodoVacacional());
                     vacacion.setFechaInicio(vacacionDetails.getFechaInicio());
                     vacacion.setFechaFin(vacacionDetails.getFechaFin());
                     vacacion.setDias(vacacionDetails.getDias());
-                    vacacion.setDiasTotales(vacacionDetails.getDiasTotales());
                     vacacion.setEstado(vacacionDetails.getEstado());
                     vacacion.setFechaSolicitud(vacacionDetails.getFechaSolicitud());
                     vacacion.setFechaAprobacion(vacacionDetails.getFechaAprobacion());
