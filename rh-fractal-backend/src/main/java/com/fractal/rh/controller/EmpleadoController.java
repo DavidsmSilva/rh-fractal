@@ -5,11 +5,13 @@ import com.fractal.rh.entity.Nomina;
 import com.fractal.rh.entity.Vacacion;
 import com.fractal.rh.entity.Departamento;
 import com.fractal.rh.entity.InventarioEquipo;
+import com.fractal.rh.entity.Contrato;
 import com.fractal.rh.repository.EmpleadoRepository;
 import com.fractal.rh.repository.NominaRepository;
 import com.fractal.rh.repository.VacacionRepository;
 import com.fractal.rh.repository.DepartamentoRepository;
 import com.fractal.rh.repository.InventarioEquipoRepository;
+import com.fractal.rh.repository.ContratoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -38,6 +40,9 @@ public class EmpleadoController {
 
     @Autowired
     private InventarioEquipoRepository inventarioEquipoRepository;
+
+    @Autowired
+    private ContratoRepository contratoRepository;
 
     @GetMapping
     public List<Empleado> getAllEmpleados() {
@@ -76,6 +81,9 @@ public class EmpleadoController {
         
         // 7. Actualizar departamento
         actualizarDepartamento(empleado.getDepartamento(), empleado.getNombre() + " " + empleado.getApellido());
+        
+        // 8. Crear contrato automático
+        crearContrato(empleado);
         
         return empleadoGuardado;
     }
@@ -185,6 +193,24 @@ public class EmpleadoController {
             d.setNumeroEmpleados((d.getNumeroEmpleados() != null ? d.getNumeroEmpleados() : 0) + 1);
             departamentoRepository.save(d);
         }
+    }
+
+    private void crearContrato(Empleado empleado) {
+        String tipoContrato = "INDEFINIDO";
+        if (empleado.getTipoContrato() != null && !empleado.getTipoContrato().isEmpty()) {
+            tipoContrato = empleado.getTipoContrato();
+        }
+        
+        Contrato contrato = Contrato.builder()
+                .empleadoId(empleado.getId())
+                .nombreEmpleado(empleado.getNombre() + " " + empleado.getApellido())
+                .tipoContrato(tipoContrato)
+                .fechaInicio(empleado.getFechaContratacion() != null ? empleado.getFechaContratacion() : LocalDate.now())
+                .salario(empleado.getSalario())
+                .estado("ACTIVO")
+                .build();
+        
+        contratoRepository.save(contrato);
     }
 
     @PutMapping("/{id}")

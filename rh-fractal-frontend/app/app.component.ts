@@ -12,10 +12,13 @@ import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
       <nav>
         <a routerLink="/empleados" routerLinkActive="active">Empleados</a> |
         <a routerLink="/departamentos" routerLinkActive="active">Departamentos</a> |
+        <a routerLink="/contratos" routerLinkActive="active">Contratos</a> |
         <a routerLink="/nominas" routerLinkActive="active">Nóminas</a> |
-        <a routerLink="/beneficios" routerLinkActive="active">Beneficios</a> |
+        <a routerLink="/asistencia" routerLinkActive="active">Asistencia</a> |
         <a routerLink="/vacaciones" routerLinkActive="active">Vacaciones</a> |
-        <a routerLink="/inventario" routerLinkActive="active">Inventario</a>
+        <a routerLink="/beneficios" routerLinkActive="active">Beneficios</a> |
+        <a routerLink="/inventario" routerLinkActive="active">Inventario</a> |
+        <a routerLink="/reclutamiento" routerLinkActive="active">Reclutamiento</a>
       </nav>
       <router-outlet></router-outlet>
     </div>

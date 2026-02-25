@@ -12,12 +12,18 @@ import com.fractal.rh.repository.BeneficioRepository;
 import com.fractal.rh.repository.InventarioEquipoRepository;
 import com.fractal.rh.repository.EmpleadoRepository;
 import com.fractal.rh.repository.DepartamentoRepository;
+import com.fractal.rh.repository.ContratoRepository;
+import com.fractal.rh.repository.AsistenciaRepository;
+import com.fractal.rh.repository.PostulacionRepository;
 import com.fractal.rh.entity.Nomina;
 import com.fractal.rh.entity.Vacacion;
 import com.fractal.rh.entity.Beneficio;
 import com.fractal.rh.entity.InventarioEquipo;
 import com.fractal.rh.entity.Empleado;
 import com.fractal.rh.entity.Departamento;
+import com.fractal.rh.entity.Contrato;
+import com.fractal.rh.entity.Asistencia;
+import com.fractal.rh.entity.Postulacion;
 
 @Component
 public class DataSeeder implements CommandLineRunner {
@@ -42,6 +48,15 @@ public class DataSeeder implements CommandLineRunner {
   @Autowired
   private DepartamentoRepository departamentoRepository;
 
+  @Autowired
+  private ContratoRepository contratoRepository;
+
+  @Autowired
+  private AsistenciaRepository asistenciaRepository;
+
+  @Autowired
+  private PostulacionRepository postulacionRepository;
+
   @Override
   public void run(String... args) throws Exception {
     seedIfNeeded("departamentos");
@@ -50,6 +65,9 @@ public class DataSeeder implements CommandLineRunner {
     seedIfNeeded("vacaciones");
     seedIfNeeded("beneficios");
     seedIfNeeded("inventario_equipos");
+    seedIfNeeded("contratos");
+    seedIfNeeded("asistencia");
+    seedIfNeeded("postulaciones");
   }
 
   private void seedIfNeeded(String table) {
@@ -219,6 +237,39 @@ public class DataSeeder implements CommandLineRunner {
       inventarioEquipoRepository.save(eq11);
       inventarioEquipoRepository.save(eq12);
       inventarioEquipoRepository.save(eq13);
+    } else if ("contratos".equals(table)) {
+      Contrato c1 = Contrato.builder().empleadoId(1L).nombreEmpleado("Miguel Soto").tipoContrato("INDEFINIDO").fechaInicio(LocalDate.of(2020, 1, 15)).salario(85000.0).estado("ACTIVO").build();
+      Contrato c2 = Contrato.builder().empleadoId(2L).nombreEmpleado("Laura García").tipoContrato("INDEFINIDO").fechaInicio(LocalDate.of(2019, 3, 10)).salario(75000.0).estado("ACTIVO").build();
+      Contrato c3 = Contrato.builder().empleadoId(3L).nombreEmpleado("Carlos Martínez").tipoContrato("FIJO").fechaInicio(LocalDate.of(2021, 6, 20)).fechaFin(LocalDate.of(2026, 6, 20)).salario(48000.0).estado("ACTIVO").build();
+      Contrato c4 = Contrato.builder().empleadoId(4L).nombreEmpleado("Ana López").tipoContrato("INDEFINIDO").fechaInicio(LocalDate.of(2018, 9, 5)).salario(55000.0).estado("ACTIVO").build();
+      Contrato c5 = Contrato.builder().empleadoId(5L).nombreEmpleado("Pedro Rodríguez").tipoContrato("FIJO").fechaInicio(LocalDate.of(2020, 11, 1)).salario(45000.0).estado("ACTIVO").build();
+      contratoRepository.save(c1);
+      contratoRepository.save(c2);
+      contratoRepository.save(c3);
+      contratoRepository.save(c4);
+      contratoRepository.save(c5);
+    } else if ("asistencia".equals(table)) {
+      Asistencia a1 = Asistencia.builder().empleadoId(1L).nombreEmpleado("Miguel Soto").fecha(LocalDate.of(2026, 2, 24)).horaEntrada(java.time.LocalTime.of(8, 0)).horaSalida(java.time.LocalTime.of(17, 0)).horasExtras(0.0).estado("PUNTUAL").build();
+      Asistencia a2 = Asistencia.builder().empleadoId(2L).nombreEmpleado("Laura García").fecha(LocalDate.of(2026, 2, 24)).horaEntrada(java.time.LocalTime.of(8, 5)).horaSalida(java.time.LocalTime.of(17, 0)).horasExtras(0.0).estado("ATRASO").build();
+      Asistencia a3 = Asistencia.builder().empleadoId(3L).nombreEmpleado("Carlos Martínez").fecha(LocalDate.of(2026, 2, 24)).horaEntrada(java.time.LocalTime.of(8, 0)).horaSalida(java.time.LocalTime.of(18, 30)).horasExtras(1.5).estado("PUNTUAL").build();
+      Asistencia a4 = Asistencia.builder().empleadoId(4L).nombreEmpleado("Ana López").fecha(LocalDate.of(2026, 2, 24)).horaEntrada(java.time.LocalTime.of(8, 0)).horaSalida(java.time.LocalTime.of(17, 0)).horasExtras(0.0).estado("PUNTUAL").build();
+      Asistencia a5 = Asistencia.builder().empleadoId(5L).nombreEmpleado("Pedro Rodríguez").fecha(LocalDate.of(2026, 2, 24)).horaEntrada(java.time.LocalTime.of(9, 0)).horaSalida(java.time.LocalTime.of(17, 0)).horasExtras(0.0).estado("ATRASO").build();
+      asistenciaRepository.save(a1);
+      asistenciaRepository.save(a2);
+      asistenciaRepository.save(a3);
+      asistenciaRepository.save(a4);
+      asistenciaRepository.save(a5);
+    } else if ("postulaciones".equals(table)) {
+      Postulacion p1 = Postulacion.builder().nombre("Juan Pérez").email("juan.perez@email.com").telefono("3001112233").cargoAplicado("Desarrollador").estado("ENTREVISTA").fechaPostulacion(LocalDate.of(2026, 2, 10)).observaciones("Excelente perfil técnico").build();
+      Postulacion p2 = Postulacion.builder().nombre("María González").email("maria.gonzalez@email.com").telefono("3002223344").cargoAplicado("Analista de Datos").estado("RECIBIDO").fechaPostulacion(LocalDate.of(2026, 2, 15)).observaciones("Sin experiencia").build();
+      Postulacion p3 = Postulacion.builder().nombre("Luis Ramírez").email("luis.ramirez@email.com").telefono("3003334455").cargoAplicado("Gerente de Ventas").estado("CONTRATADO").fechaPostulacion(LocalDate.of(2026, 1, 20)).observaciones("Amplia experiencia en ventas").build();
+      Postulacion p4 = Postulacion.builder().nombre("Ana Torres").email("ana.torres@email.com").telefono("3004445566").cargoAplicado("Diseñador Gráfico").estado("RECHAZADO").fechaPostulacion(LocalDate.of(2026, 2, 1)).observaciones("No cumple requisitos").build();
+      Postulacion p5 = Postulacion.builder().nombre("Carlos Díaz").email("carlos.diaz@email.com").telefono("3005556677").cargoAplicado("Contador").estado("ENTREVISTA").fechaPostulacion(LocalDate.of(2026, 2, 18)).observaciones("Perfil interesante").build();
+      postulacionRepository.save(p1);
+      postulacionRepository.save(p2);
+      postulacionRepository.save(p3);
+      postulacionRepository.save(p4);
+      postulacionRepository.save(p5);
     }
   }
 }
