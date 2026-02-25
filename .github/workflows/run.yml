@@ -1,0 +1,58 @@
+name: Run Project
+
+on:
+  workflow_dispatch:
+    inputs:
+      target:
+        description: 'What to run'
+        required: true
+        default: 'all'
+        type: choice
+        options:
+          - all
+          - backend
+          - frontend
+
+jobs:
+  run-backend:
+    if: inputs.target == 'all' || inputs.target == 'backend'
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: rh-fractal-backend
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Build Backend
+        run: ./gradlew build
+
+      - name: Run Backend
+        run: ./gradlew bootRun
+
+  run-frontend:
+    if: inputs.target == 'all' || inputs.target == 'frontend'
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: rh-fractal-frontend
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run Frontend
+        run: npm start
