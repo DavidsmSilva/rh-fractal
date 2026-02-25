@@ -81,6 +81,9 @@ public class Empleado {
     @Column(name = "observaciones")
     private String observaciones;
     
+    @Column
+    private String rol;
+    
     @Column(name = "fecha_creacion", nullable = false, updatable = false)
     private LocalDate fechaCreacion;
     
