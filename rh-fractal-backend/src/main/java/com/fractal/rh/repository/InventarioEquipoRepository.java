@@ -12,4 +12,5 @@ public interface InventarioEquipoRepository extends JpaRepository<InventarioEqui
     List<InventarioEquipo> findByCargo(String cargo);
     List<InventarioEquipo> findByUbicacion(String ubicacion);
     List<InventarioEquipo> findByMarca(String marca);
+    List<InventarioEquipo> findByDuenoIsNullOrDueno(String dueno);
 }

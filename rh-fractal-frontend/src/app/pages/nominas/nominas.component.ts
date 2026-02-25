@@ -6,12 +6,13 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 interface Nomina {
   id?: number;
   periodo: string;
-  nombreEmpleado: string;
   totalDevengado: number;
   totalDeducciones: number;
   totalNeto: number;
   fechaPago: string;
   estado: string;
+  nombreEmpleado?: string;
+  empleadoId?: number;
 }
 
 @Component({
@@ -72,7 +73,7 @@ interface Nomina {
         <div class="nomina-card" *ngFor="let nom of nominasFiltradas">
           <div class="card-header">
             <h3>{{ nom.periodo }}</h3>
-            <span class="empleado-badge">{{ nom.nombreEmpleado }}</span>
+            <span class="empleado-name">{{ nom.nombreEmpleado || 'Empleado #' + nom.empleadoId }}</span>
           </div>
           <div class="card-body">
             <p>
@@ -179,7 +180,6 @@ interface Nomina {
     .btn-cancelar:hover { background: #e0e0e0; }
     .btn-guardar { background: linear-gradient(135deg, #2E7D32, #1B5E20); border: none; color: white; }
     .btn-guardar:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(46,125,50,0.3); }
-    .empleado-badge { display: inline-block; background: #e8f5e9; color: #2e7d32; padding: 0.25rem 0.75rem; border-radius: 12px; font-size: 0.75rem; font-weight: 600; margin-top: 0.25rem; }
   `]
 })
 export class NominasComponent implements OnInit {
@@ -190,7 +190,6 @@ export class NominasComponent implements OnInit {
   
   nuevaNomina: Nomina = {
     periodo: '',
-    nombreEmpleado: '',
     totalDevengado: 0,
     totalDeducciones: 0,
     totalNeto: 0,

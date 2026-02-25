@@ -14,6 +14,7 @@ interface Empleado {
   departamento: string;
   salario: number;
   estado: string;
+  rol: string;
   telefonoContacto?: string;
   fechaContratacion?: string;
 }
@@ -139,10 +140,6 @@ interface Empleado {
                   <label>Email *</label>
                   <input type="email" [(ngModel)]="nuevoEmpleado.email" name="email" required>
                 </div>
-                <div class="form-group">
-                  <label>Código Empleado *</label>
-                  <input type="text" [(ngModel)]="nuevoEmpleado.numeroEmpleado" name="numeroEmpleado" required>
-                </div>
               </div>
               <div class="form-row">
                 <div class="form-group">
@@ -150,6 +147,22 @@ interface Empleado {
                   <input type="text" [(ngModel)]="nuevoEmpleado.cargo" name="cargo" required>
                 </div>
                 <div class="form-group">
+                  <label>Rol *</label>
+                  <select [(ngModel)]="nuevoEmpleado.rol" name="rol" required>
+                    <option value="">Seleccionar...</option>
+                    <option value="Gerente">Gerente</option>
+                    <option value="Directora">Directora</option>
+                    <option value="Coordinador">Coordinador</option>
+                    <option value="Analista">Analista</option>
+                    <option value="Desarrollador">Desarrollador</option>
+                    <option value="Contador">Contador</option>
+                    <option value="Supervisor">Supervisor</option>
+                    <option value="Asistente">Asistente</option>
+                    <option value="Secretaria">Secretaria</option>
+                    <option value="Diseñador">Diseñador</option>
+                  </select>
+                </div>
+              </div>
                   <label>Departamento *</label>
                   <select [(ngModel)]="nuevoEmpleado.departamento" name="departamento" required>
                     <option value="">Seleccionar...</option>
@@ -321,6 +334,7 @@ export class EmpleadosComponent implements OnInit {
     departamento: '',
     salario: 0,
     estado: 'ACTIVO',
+    rol: '',
     telefonoContacto: '',
     fechaContratacion: new Date().toISOString().split('T')[0]
   };
@@ -377,6 +391,7 @@ export class EmpleadosComponent implements OnInit {
       departamento: '',
       salario: 0,
       estado: 'ACTIVO',
+      rol: '',
       telefonoContacto: '',
       fechaContratacion: new Date().toISOString().split('T')[0]
     };
