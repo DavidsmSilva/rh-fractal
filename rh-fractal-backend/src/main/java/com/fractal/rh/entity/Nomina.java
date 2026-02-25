@@ -44,6 +44,9 @@ public class Nomina {
     @Column(name = "empleado_id")
     private Long empleadoId;
     
+    @Column(name = "nombre_empleado")
+    private String nombreEmpleado;
+    
     @Column(name = "fecha_creacion", nullable = false, updatable = false)
     private LocalDate fechaCreacion;
     
