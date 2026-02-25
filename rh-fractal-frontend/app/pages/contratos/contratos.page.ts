@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ContratosComponent } from '../../src/app/pages/contratos/contratos.component';
+import { ContratosComponent } from '../../../src/app/pages/contratos/contratos.component';
 
 @Component({
   selector: 'app-contratos-page',
