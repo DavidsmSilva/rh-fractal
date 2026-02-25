@@ -117,97 +117,98 @@ interface Empleado {
         </div>
       </div>
 
-      <div class="modal-overlay" *ngIf="mostrarModal" (click)="cerrarModal()">
-        <div class="modal-content" (click)="$event.stopPropagation()">
-          <div class="modal-header">
-            <h2>Nuevo Empleado</h2>
-            <button class="close-btn" (click)="cerrarModal()">×</button>
-          </div>
-          <div class="modal-body">
-            <form (ngSubmit)="guardarEmpleado()">
-              <div class="form-row">
-                <div class="form-group">
-                  <label>Nombre *</label>
-                  <input type="text" [(ngModel)]="nuevoEmpleado.nombre" name="nombre" required>
-                </div>
-                <div class="form-group">
-                  <label>Apellido *</label>
-                  <input type="text" [(ngModel)]="nuevoEmpleado.apellido" name="apellido" required>
-                </div>
-              </div>
-              <div class="form-row">
-                <div class="form-group">
-                  <label>Email *</label>
-                  <input type="email" [(ngModel)]="nuevoEmpleado.email" name="email" required>
-                </div>
-                <div class="form-group">
-                  <label>Cargo *</label>
-                  <input type="text" [(ngModel)]="nuevoEmpleado.cargo" name="cargo" required>
-                </div>
-              </div>
-                <div class="form-group">
-                  <label>Departamento *</label>
-                  <select [(ngModel)]="nuevoEmpleado.departamento" name="departamento" required>
-                    <option value="">Seleccionar...</option>
-                    <option value="Tecnología">Tecnología</option>
-                    <option value="Recursos Humanos">Recursos Humanos</option>
-                    <option value="Mercadeo">Mercadeo</option>
-                    <option value="Finanzas">Finanzas</option>
-                    <option value="Operaciones">Operaciones</option>
-                    <option value="Administración">Administración</option>
-                  </select>
-                </div>
-              </div>
-              <div class="form-row">
-                <div class="form-group">
-                  <label>Salario *</label>
-                  <input type="number" [(ngModel)]="nuevoEmpleado.salario" name="salario" required>
-                </div>
-                <div class="form-group">
-                  <label>Teléfono</label>
-                  <input type="text" [(ngModel)]="nuevoEmpleado.telefonoContacto" name="telefonoContacto">
-                </div>
-              </div>
-              <div class="form-row">
-                <div class="form-group">
-                  <label>Fecha de Contratación *</label>
-                  <input type="date" [(ngModel)]="nuevoEmpleado.fechaContratacion" name="fechaContratacion" required>
-                </div>
-                <div class="form-group">
-                  <label>Estado</label>
-                  <select [(ngModel)]="nuevoEmpleado.estado" name="estado">
-                    <option value="ACTIVO">ACTIVO</option>
-                    <option value="INACTIVO">INACTIVO</option>
-                    <option value="EN_PRUEBA">EN PRUEBA</option>
-                  </select>
-                </div>
-              </div>
-              <div class="form-row">
-                <div class="form-group">
-                  <label>Rol</label>
-                  <select [(ngModel)]="nuevoEmpleado.rol" name="rol">
-                    <option value="Gerente">Gerente</option>
-                    <option value="Director">Director</option>
-                    <option value="Coordinador">Coordinador</option>
-                    <option value="Supervisor">Supervisor</option>
-                    <option value="Analista">Analista</option>
-                    <option value="Desarrollador">Desarrollador</option>
-                    <option value="Contador">Contador</option>
-                    <option value="Asistente">Asistente</option>
-                    <option value="Secretaria">Secretaria</option>
-                    <option value="Diseñador">Diseñador</option>
-                    <option value="Empleado">Empleado</option>
-                  </select>
-                </div>
-              </div>
-              <div class="form-actions">
-                <button type="button" class="btn-cancelar" (click)="cerrarModal()">Cancelar</button>
-                <button type="submit" class="btn-guardar">Guardar Empleado</button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
+       <div class="modal-overlay" *ngIf="mostrarModal" (click)="cerrarModal()">
+         <div class="modal-content" (click)="$event.stopPropagation()">
+           <div class="modal-header">
+             <h2>Nuevo Empleado</h2>
+             <button class="close-btn" (click)="cerrarModal()">×</button>
+           </div>
+           <div class="modal-body">
+             <form (ngSubmit)="guardarEmpleado()">
+               <div class="form-row">
+                 <div class="form-group">
+                   <label>Nombre *</label>
+                   <input type="text" [(ngModel)]="nuevoEmpleado.nombre" name="nombre" required>
+                 </div>
+                 <div class="form-group">
+                   <label>Apellido *</label>
+                   <input type="text" [(ngModel)]="nuevoEmpleado.apellido" name="apellido" required>
+                 </div>
+               </div>
+               <div class="form-row">
+                 <div class="form-group">
+                   <label>Email *</label>
+                   <input type="email" [(ngModel)]="nuevoEmpleado.email" name="email" required>
+                 </div>
+                 <div class="form-group">
+                   <label>Cargo *</label>
+                   <input type="text" [(ngModel)]="nuevoEmpleado.cargo" name="cargo" required>
+                 </div>
+               </div>
+               <div class="form-row">
+                 <div class="form-group">
+                   <label>Departamento *</label>
+                   <select [(ngModel)]="nuevoEmpleado.departamento" name="departamento" required>
+                     <option value="">Seleccionar...</option>
+                     <option value="Tecnología">Tecnología</option>
+                     <option value="Recursos Humanos">Recursos Humanos</option>
+                     <option value="Mercadeo">Mercadeo</option>
+                     <option value="Finanzas">Finanzas</option>
+                     <option value="Operaciones">Operaciones</option>
+                     <option value="Administración">Administración</option>
+                   </select>
+                 </div>
+               </div>
+               <div class="form-row">
+                 <div class="form-group">
+                   <label>Salario *</label>
+                   <input type="number" [(ngModel)]="nuevoEmpleado.salario" name="salario" required>
+                 </div>
+                 <div class="form-group">
+                   <label>Teléfono</label>
+                   <input type="text" [(ngModel)]="nuevoEmpleado.telefonoContacto" name="telefonoContacto">
+                 </div>
+               </div>
+               <div class="form-row">
+                 <div class="form-group">
+                   <label>Fecha de Contratación *</label>
+                   <input type="date" [(ngModel)]="nuevoEmpleado.fechaContratacion" name="fechaContratacion" required>
+                 </div>
+                 <div class="form-group">
+                   <label>Estado</label>
+                   <select [(ngModel)]="nuevoEmpleado.estado" name="estado">
+                     <option value="ACTIVO">ACTIVO</option>
+                     <option value="INACTIVO">INACTIVO</option>
+                     <option value="EN_PRUEBA">EN PRUEBA</option>
+                   </select>
+                 </div>
+               </div>
+               <div class="form-row">
+                 <div class="form-group">
+                   <label>Rol</label>
+                   <select [(ngModel)]="nuevoEmpleado.rol" name="rol">
+                     <option value="Gerente">Gerente</option>
+                     <option value="Director">Director</option>
+                     <option value="Coordinador">Coordinador</option>
+                     <option value="Supervisor">Supervisor</option>
+                     <option value="Analista">Analista</option>
+                     <option value="Desarrollador">Desarrollador</option>
+                     <option value="Contador">Contador</option>
+                     <option value="Asistente">Asistente</option>
+                     <option value="Secretaria">Secretaria</option>
+                     <option value="Diseñador">Diseñador</option>
+                     <option value="Empleado">Empleado</option>
+                   </select>
+                 </div>
+               </div>
+               <div class="form-actions">
+                 <button type="button" class="btn-cancelar" (click)="cerrarModal()">Cancelar</button>
+                 <button type="submit" class="btn-guardar">Guardar Empleado</button>
+               </div>
+             </form>
+           </div>
+         </div>
+       </div>
     </div>
   `,
   styles: [`

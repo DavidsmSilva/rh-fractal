@@ -4,6 +4,7 @@ import { DepartamentosPage } from '../pages/departamentos/departamentos.page';
 import { NominasPage } from '../pages/nominas/nominas.page';
 import { BeneficiosPage } from '../pages/beneficios/beneficios.page';
 import { VacacionesPage } from '../pages/vacaciones/vacaciones.page';
+import { InventarioPage } from '../pages/inventario/inventario.page';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/empleados', pathMatch: 'full' },
@@ -12,6 +13,7 @@ export const routes: Routes = [
   { path: 'nominas', component: NominasPage },
   { path: 'beneficios', component: BeneficiosPage },
   { path: 'vacaciones', component: VacacionesPage },
+  { path: 'inventario', component: InventarioPage },
   { path: '**', component: PageNotFoundComponent }
 ];
 
