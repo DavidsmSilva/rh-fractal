@@ -47,6 +47,9 @@ public class Departamento {
     @Column(name = "numero_empleados")
     private Integer numeroEmpleados;
     
+    @Column(name = "lista_empleados")
+    private String listaEmpleados;
+    
     @Column(name = "estado")
     private String estado;
     

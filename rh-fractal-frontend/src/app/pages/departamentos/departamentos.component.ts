@@ -11,6 +11,7 @@ interface Departamento {
   presupuesto: number;
   jefe: string;
   numeroEmpleados: number;
+  listaEmpleados: string;
   estado: string;
 }
 
@@ -91,6 +92,11 @@ interface Departamento {
               <span class="card-icon">👥</span>
               <span class="card-label">Empleados:</span>
               <span class="card-value">{{ dept.numeroEmpleados }}</span>
+            </p>
+            <p>
+              <span class="card-icon">📋</span>
+              <span class="card-label">Lista:</span>
+              <span class="card-value">{{ dept.listaEmpleados }}</span>
             </p>
           </div>
           <div class="card-footer">
@@ -182,6 +188,7 @@ export class DepartamentosComponent implements OnInit {
     presupuesto: 0,
     jefe: '',
     numeroEmpleados: 0,
+    listaEmpleados: '',
     estado: 'ACTIVO'
   };
 
@@ -219,7 +226,7 @@ export class DepartamentosComponent implements OnInit {
   }
 
   abrirModal() {
-    this.nuevoDepartamento = { nombre: '', descripcion: '', codigo: '', presupuesto: 0, jefe: '', numeroEmpleados: 0, estado: 'ACTIVO' };
+    this.nuevoDepartamento = { nombre: '', descripcion: '', codigo: '', presupuesto: 0, jefe: '', numeroEmpleados: 0, listaEmpleados: '', estado: 'ACTIVO' };
     this.mostrarModal = true;
   }
 

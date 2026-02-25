@@ -60,17 +60,17 @@ public class DataSeeder implements CommandLineRunner {
       return;
     }
     if ("departamentos".equals(table)) {
-      Departamento d1 = Departamento.builder().nombre("Tecnología").codigo("TEC").descripcion("Departamento encargado del desarrollo tecnológico, infraestructura y sistemas de información de la empresa").presupuesto(100000.0).jefe("Miguel Soto").numeroEmpleados(2).estado("ACTIVO").build();
+      Departamento d1 = Departamento.builder().nombre("Tecnología").codigo("TEC").descripcion("Departamento encargado del desarrollo tecnológico, infraestructura y sistemas de información de la empresa").presupuesto(100000.0).jefe("Miguel Soto").numeroEmpleados(2).listaEmpleados("Miguel Soto, Diego Torres").estado("ACTIVO").build();
       departamentoRepository.save(d1);
-      Departamento d2 = Departamento.builder().nombre("Recursos Humanos").codigo("RH").descripcion("Gestión del talento humano, reclutamiento, selección y bienestar laboral").presupuesto(50000.0).jefe("Laura García").numeroEmpleados(2).estado("ACTIVO").build();
+      Departamento d2 = Departamento.builder().nombre("Recursos Humanos").codigo("RH").descripcion("Gestión del talento humano, reclutamiento, selección y bienestar laboral").presupuesto(50000.0).jefe("Laura García").numeroEmpleados(2).listaEmpleados("Laura García, María Castaño").estado("ACTIVO").build();
       departamentoRepository.save(d2);
-      Departamento d3 = Departamento.builder().nombre("Mercadeo").codigo("MKT").descripcion("Estrategias de marketing, publicidad y comunicación corporativa").presupuesto(75000.0).jefe("Carlos Martínez").numeroEmpleados(2).estado("ACTIVO").build();
+      Departamento d3 = Departamento.builder().nombre("Mercadeo").codigo("MKT").descripcion("Estrategias de marketing, publicidad y comunicación corporativa").presupuesto(75000.0).jefe("Carlos Martínez").numeroEmpleados(2).listaEmpleados("Carlos Martínez, Javier Muñoz").estado("ACTIVO").build();
       departamentoRepository.save(d3);
-      Departamento d4 = Departamento.builder().nombre("Finanzas").codigo("FIN").descripcion("Gestión financiera, contabilidad, presupuesto y control de costos").presupuesto(120000.0).jefe("Ana López").numeroEmpleados(2).estado("ACTIVO").build();
+      Departamento d4 = Departamento.builder().nombre("Finanzas").codigo("FIN").descripcion("Gestión financiera, contabilidad, presupuesto y control de costos").presupuesto(120000.0).jefe("Ana López").numeroEmpleados(2).listaEmpleados("Ana López, Carolina Ruiz").estado("ACTIVO").build();
       departamentoRepository.save(d4);
-      Departamento d5 = Departamento.builder().nombre("Operaciones").codigo("OPE").descripcion("Coordinación de procesos operativos y logística de la empresa").presupuesto(90000.0).jefe("Pedro Rodríguez").numeroEmpleados(2).estado("ACTIVO").build();
+      Departamento d5 = Departamento.builder().nombre("Operaciones").codigo("OPE").descripcion("Coordinación de procesos operativos y logística de la empresa").presupuesto(90000.0).jefe("Pedro Rodríguez").numeroEmpleados(2).listaEmpleados("Pedro Rodríguez, Andrés Gómez").estado("ACTIVO").build();
       departamentoRepository.save(d5);
-      Departamento d6 = Departamento.builder().nombre("Administración").codigo("ADMIN").descripcion("Servicios generales, gestión documental y soporte administrativo").presupuesto(60000.0).jefe("Sofía Hernández").numeroEmpleados(2).estado("ACTIVO").build();
+      Departamento d6 = Departamento.builder().nombre("Administración").codigo("ADMIN").descripcion("Servicios generales, gestión documental y soporte administrativo").presupuesto(60000.0).jefe("Sofía Hernández").numeroEmpleados(2).listaEmpleados("Sofía Hernández, Valentina Morales").estado("ACTIVO").build();
       departamentoRepository.save(d6);
     } else if ("empleados".equals(table)) {
       Empleado e1 = Empleado.builder().nombre("Miguel").apellido("Soto").email("miguel.soto@example.com").cargo("Gerente de Tecnología").departamento("Tecnología").salario(85000.0).numeroEmpleado("EMP-0001").estado("ACTIVO").rol("Gerente").fechaContratacion(LocalDate.of(2020, 1, 15)).telefonoContacto("3001234567").build();
