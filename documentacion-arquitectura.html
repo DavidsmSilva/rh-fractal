@@ -130,6 +130,19 @@
         footer { background: #1B4332; color: white; text-align: center; padding: 20px; }
         .two-column { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
         @media (max-width: 768px) { .two-column { grid-template-columns: 1fr; } }
+        .module-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e8ecef 100%);
+            border-left: 4px solid #2E7D32;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .vinculation-arrow {
+            text-align: center;
+            font-size: 1.5em;
+            color: #2E7D32;
+            margin: 10px 0;
+        }
     </style>
 </head>
 <body>
@@ -153,12 +166,12 @@
                     <h3 style="margin-top:0;">🎯 Propósito del Sistema</h3>
                     <p>Este sistema permite a <strong>Fractal Estrategias Sostenibles</strong> gestionar de manera eficiente:</p>
                     <ul>
-                        <li>Control y registro de empleados</li>
-                        <li>Gestión de departamentos y organigrama empresarial</li>
-                        <li>Administración de nóminas y payroll</li>
-                        <li>Control de beneficios y compensaciones</li>
-                        <li>Gestión de vacaciones y permisos</li>
-                        <li>Inventario de equipos y recursos asignados</li>
+                        <li>✅ Control y registro de empleados</li>
+                        <li>✅ Gestión de departamentos y organigrama empresarial</li>
+                        <li>✅ Administración de nóminas y payroll</li>
+                        <li>✅ Control de beneficios y compensaciones</li>
+                        <li>✅ Gestión de vacaciones y permisos</li>
+                        <li>✅ Inventario de equipos y recursos asignados</li>
                     </ul>
                 </div>
 
@@ -171,22 +184,22 @@
                     <li><strong>Routing:</strong> Navegación fluida entre secciones</li>
                     <li><strong>HTTP Client:</strong> Comunicación con API REST</li>
                     <li><strong>Testing:</strong> Jasmine/Karma y Cypress configurados</li>
-                    <li><strong>Testing Agent:</strong> Agente智能化 para generación automática de tests</li>
                 </ul>
-                <p>El frontend corre en el <strong>puerto 4200</strong>.</p>
+                <p>El frontend corre en el <strong>puerto 4201</strong>.</p>
 
                 <h3>⚙️ Backend - Spring Boot 3.2</h3>
                 <p>La capa de lógica de negocio está desarrollada con <strong>Spring Boot 3.2</strong>.</p>
                 <ul>
                     <li><strong>Spring Data JPA:</strong> Acceso a datos con repositorios</li>
-                    <li><strong>Hibernate 6.3:</strong> ORM para mapeo objeto-relacional</li>
+                    <li><strong>Hibernate:</strong> ORM para mapeo objeto-relacional</li>
                     <li><strong>Spring Security:</strong> Seguridad configurable</li>
                     <li><strong>API REST:</strong> Endpoints JSON</li>
-                    <li><strong>CORS:</strong> Configurado para localhost:4200</li>
+                    <li><strong>CORS:</strong> Configurado para localhost:4201</li>
                     <li><strong>Java 17:</strong> Características modernas</li>
                     <li><strong>H2 Console:</strong> Consola web en /h2-console</li>
+                    <li><strong>Generación Automática:</strong> Código de empleado, nóminas, inventario, vacaciones</li>
                 </ul>
-                <p>El backend corre en el <strong>puerto 8082</strong>.</p>
+                <p>El backend corre en el <strong>puerto 8083</strong>.</p>
 
                 <h3>🗄️ Base de Datos - H2 (Desarrollo)</h3>
                 <p>Almacenamiento en <strong>H2 Database</strong>, base de datos en memoria para desarrollo.</p>
@@ -195,7 +208,7 @@
                     <ul>
                         <li>URL: jdbc:h2:mem:rh_fractal</li>
                         <li>Usuario: sa</li>
-                        <li>Consola: http://localhost:8082/h2-console</li>
+                        <li>Consola: http://localhost:8083/h2-console</li>
                     </ul>
                 </div>
             </section>
@@ -209,7 +222,7 @@
                             <div class="tech-card">Java 17</div>
                             <div class="tech-card">Spring Boot 3.2</div>
                             <div class="tech-card">Spring Data JPA</div>
-                            <div class="tech-card">Hibernate 6.3</div>
+                            <div class="tech-card">Hibernate</div>
                             <div class="tech-card">H2 Database</div>
                             <div class="tech-card">Spring Security</div>
                         </div>
@@ -231,19 +244,116 @@
             <section>
                 <h2>🔄 Arquitectura del Sistema</h2>
                 <div class="architecture-diagram">
-                    <div class="diagram-box frontend-box">🖥️ Frontend<br>Angular 18<br>(4200)</div>
+                    <div class="diagram-box frontend-box">🖥️ Frontend<br>Angular 18<br>(4201)</div>
                     <span class="arrow">⬌</span>
-                    <div class="diagram-box backend-box">⚙️ Backend<br>Spring Boot<br>(8082)</div>
+                    <div class="diagram-box backend-box">⚙️ Backend<br>Spring Boot<br>(8083)</div>
                     <span class="arrow">⬌</span>
                     <div class="diagram-box database-box">🗄️ H2 DB<br>Memoria</div>
                 </div>
                 <table>
                     <tr><th>Componente</th><th>Tecnología</th><th>Puerto</th><th>Función</th></tr>
-                    <tr><td>Frontend</td><td>Angular 18</td><td>4200</td><td>Interfaz de usuario</td></tr>
-                    <tr><td>Backend</td><td>Spring Boot</td><td>8082</td><td>Lógica de negocio</td></tr>
+                    <tr><td>Frontend</td><td>Angular 18</td><td>4201</td><td>Interfaz de usuario</td></tr>
+                    <tr><td>Backend</td><td>Spring Boot</td><td>8083</td><td>Lógica de negocio</td></tr>
                     <tr><td>ORM</td><td>JPA/Hibernate</td><td>-</td><td>Mapeo objeto-relacional</td></tr>
                     <tr><td>Base de Datos</td><td>H2</td><td>Memoria</td><td>Almacenamiento</td></tr>
                 </table>
+            </section>
+
+            <section>
+                <h2>👥 Módulos del Sistema</h2>
+                
+                <h3>✅ Empleados</h3>
+                <div class="module-card">
+                    <p><strong>Gestión de empleados</strong> con vinculación automática:</p>
+                    <ul>
+                        <li>✅ Datos personales (nombre, apellido, email, teléfono)</li>
+                        <li>✅ Información laboral (cargo, departamento, salario)</li>
+                        <li>✅ Rol en la empresa (Gerente, Director, Coordinador, etc.)</li>
+                        <li>✅ Código de empleado automático (EMP-0001, EMP-0002, etc.)</li>
+                        <li>✅ Estado (ACTIVO, INACTIVO, EN_PRUEBA)</li>
+                        <li>✅ <strong>Vinculación automática:</strong> Al crear un empleado se genera automáticamente nómina, inventario y vacaciones</li>
+                    </ul>
+                </div>
+
+                <h3>✅ Departamentos</h3>
+                <div class="module-card">
+                    <p><strong>Estructura organizacional</strong> de la empresa:</p>
+                    <ul>
+                        <li>✅ 6 departamentos configurados (Tecnología, RRHH, Mercadeo, Finanzas, Operaciones, Administración)</li>
+                        <li>✅ Jefe de departamento</li>
+                        <li>✅ Presupuesto</li>
+                        <li>✅ Lista de empleados por departamento</li>
+                        <li>✅ Descripción de cada área</li>
+                    </ul>
+                </div>
+
+                <h3>✅ Nóminas</h3>
+                <div class="module-card">
+                    <p><strong>Gestión de payroll</strong> vinculado a empleados:</p>
+                    <ul>
+                        <li>✅ Períodos mensuales (2026-01, 2026-02, etc.)</li>
+                        <li>✅ Total devengado (salario base)</li>
+                        <li>✅ Deducciones (10% del salario)</li>
+                        <li>✅ Total neto a pagar</li>
+                        <li>✅ Estado (PAGADO, PENDIENTE)</li>
+                        <li>✅ <strong>Vinculado a empleado:</strong> Muestra el nombre del empleado</li>
+                        <li>✅ <strong>Automático:</strong> Se genera al crear un empleado</li>
+                    </ul>
+                </div>
+
+                <h3>✅ Vacaciones</h3>
+                <div class="module-card">
+                    <p><strong>Control de vacaciones</strong> por empleado:</p>
+                    <ul>
+                        <li>✅ Días disponibles (25 por defecto)</li>
+                        <li>✅ Días tomados</li>
+                        <li>✅ Período vacacional</li>
+                        <li>✅ Estado (APROBADO, PENDIENTE, RECHAZADO, ACTIVO)</li>
+                        <li>✅ <strong>Vinculado a empleado:</strong> Con ID y nombre del empleado</li>
+                        <li>✅ <strong>Automático:</strong> Se crea al registrar un empleado</li>
+                    </ul>
+                </div>
+
+                <h3>✅ Beneficios</h3>
+                <div class="module-card">
+                    <p><strong>Beneficios para empleados</strong> (genéricos de la empresa):</p>
+                    <ul>
+                        <li>✅ Seguro Salud</li>
+                        <li>✅ Bono Alimentación</li>
+                        <li>✅ Auxilio de Transporte</li>
+                        <li>✅ Plan de Educación</li>
+                        <li>✅ Seguro de Vida</li>
+                        <li>✅ Bono de Productividad</li>
+                        <li>✅ Programa de Wellness</li>
+                    </ul>
+                </div>
+
+                <h3>✅ Inventario</h3>
+                <div class="module-card">
+                    <p><strong>Equipos asignados</strong> a empleados:</p>
+                    <ul>
+                        <li>✅ Laptop/Desktop por empleado</li>
+                        <li>✅ Marca, modelo, serial</li>
+                        <li>✅ Procesador, RAM</li>
+                        <li>✅ Licencias (Windows, Office)</li>
+                        <li>✅ Usuario y contraseña Windows</li>
+                        <li>✅ Ubicación del equipo</li>
+                        <li>✅ <strong>Vinculado a empleado:</strong> Dueño, usuario, cargo</li>
+                        <li>✅ <strong>Automático:</strong> Se asigna al crear un empleado (busca disponible o crea nuevo)</li>
+                    </ul>
+                </div>
+
+                <div class="success-box">
+                    <h3 style="margin-top:0;">🔗 Sistema de Vinculación Completo</h3>
+                    <p>Al crear un empleado, el sistema automáticamente:</p>
+                    <ol>
+                        <li>Genera código de empleado único (EMP-0001, EMP-0002, ...)</li>
+                        <li>Crea nómina con período actual (devengado, deducciones 10%, neto)</li>
+                        <li>Asigna laptop del inventario (o crea una nueva si no hay disponible)</li>
+                        <li>Genera registro de vacaciones (25 días disponibles)</li>
+                        <li>Actualiza el departamento (agrega a lista de empleados)</li>
+                    </ol>
+                </div>
             </section>
 
             <section>
@@ -253,9 +363,6 @@
 ├── <span class="folder">src/main/java/com/fractal/rh/</span>
 │   ├── <span class="file">RhFractalApplication.java</span> <span class="comment"># Clase principal</span>
 │   ├── <span class="folder">config/</span> <span class="comment"># Configuraciones</span>
-│   │   ├── <span class="file">CorsConfig.java</span>
-│   │   ├── <span class="file">SecurityConfig.java</span>
-│   │   └── <span class="file">DataLoader.java</span>
 │   ├── <span class="folder">entity/</span> <span class="comment"># Entidades JPA</span>
 │   │   ├── <span class="file">Empleado.java</span>
 │   │   ├── <span class="file">Departamento.java</span>
@@ -264,7 +371,8 @@
 │   │   ├── <span class="file">Nomina.java</span>
 │   │   └── <span class="file">InventarioEquipo.java</span>
 │   ├── <span class="folder">repository/</span> <span class="comment"># Repositorios</span>
-│   └── <span class="folder">controller/</span> <span class="comment"># Controladores REST</span>
+│   ├── <span class="folder">controller/</span> <span class="comment"># Controladores REST</span>
+│   └── <span class="folder">seed/</span> <span class="comment"># Datos de prueba</span>
 ├── <span class="folder">src/main/resources/</span>
 │   └── <span class="file">application.properties</span>
 └── <span class="file">build.gradle</span></div>
@@ -290,13 +398,26 @@
             <section>
                 <h2>🔌 Endpoints de la API</h2>
                 <table>
-                    <tr><th>Módulo</th><th>Endpoint</th><th>Métodos</th></tr>
-                    <tr><td>Empleados</td><td>/api/empleados</td><td>GET, POST, PUT, DELETE</td></tr>
-                    <tr><td>Departamentos</td><td>/api/departamentos</td><td>GET, POST, PUT, DELETE</td></tr>
-                    <tr><td>Nóminas</td><td>/api/nominas</td><td>GET, POST, PUT, DELETE</td></tr>
-                    <tr><td>Beneficios</td><td>/api/beneficios</td><td>GET, POST, PUT, DELETE</td></tr>
-                    <tr><td>Vacaciones</td><td>/api/vacaciones</td><td>GET, POST, PUT, DELETE</td></tr>
-                    <tr><td>Inventario</td><td>/api/inventario</td><td>GET, POST, PUT, DELETE</td></tr>
+                    <tr><th>Módulo</th><th>Endpoint</th><th>Métodos</th><th>Descripción</th></tr>
+                    <tr><td>Empleados</td><td>/api/empleados</td><td>GET, POST, PUT, DELETE</td><td>Gestión de empleados (+ auto-generación)</td></tr>
+                    <tr><td>Departamentos</td><td>/api/departamentos</td><td>GET, POST, PUT, DELETE</td><td>Estructura organizacional</td></tr>
+                    <tr><td>Nóminas</td><td>/api/nominas</td><td>GET, POST, PUT, DELETE</td><td>Payroll por empleado</td></tr>
+                    <tr><td>Beneficios</td><td>/api/beneficios</td><td>GET, POST, PUT, DELETE</td><td>Beneficios empresa</td></tr>
+                    <tr><td>Vacaciones</td><td>/api/vacaciones</td><td>GET, POST, PUT, DELETE</td><td>Control de vacaciones</td></tr>
+                    <tr><td>Inventario</td><td>/api/inventario</td><td>GET, POST, PUT, DELETE</td><td>Equipos asignados</td></tr>
+                </table>
+            </section>
+
+            <section>
+                <h2>📊 Datos de Prueba</h2>
+                <table>
+                    <tr><th>Entidad</th><th>Cantidad</th><th>Detalles</th></tr>
+                    <tr><td>Departamentos</td><td>6</td><td>Tecnología, RRHH, Mercadeo, Finanzas, Operaciones, Administración</td></tr>
+                    <tr><td>Empleados</td><td>12</td><td>Con código, rol, departamento, estado</td></tr>
+                    <tr><td>Nóminas</td><td>24</td><td>2 períodos por empleado (12 x 2 = 24)</td></tr>
+                    <tr><td>Vacaciones</td><td>12</td><td>Una por cada empleado</td></tr>
+                    <tr><td>Beneficios</td><td>10</td><td>Beneficios generales de la empresa</td></tr>
+                    <tr><td>Inventario</td><td>13</td><td>Laptops, desktops, monitor</td></tr>
                 </table>
             </section>
 
@@ -306,42 +427,39 @@
                     <div>
                         <h3>Backend</h3>
                         <ul>
-                            <li>No requiere BD (usa H2)</li>
-                            <li>Ejecuta: <code>.\gradlew.bat bootRun</code></li>
-                            <li>Backend: <strong>http://localhost:8082</strong></li>
-                            <li>Console H2: <strong>http://localhost:8082/h2-console</strong></li>
+                            <li>No requiere BD externa (usa H2 en memoria)</li>
+                            <li>Ejecuta: <code>cd rh-fractal-backend && ./gradlew bootRun</code></li>
+                            <li>Backend: <strong>http://localhost:8083</strong></li>
+                            <li>Console H2: <strong>http://localhost:8083/h2-console</strong></li>
                         </ul>
                     </div>
                     <div>
                         <h3>Frontend</h3>
                         <ul>
-                            <li>Ejecuta: <code>npm install</code></li>
+                            <li>Ejecuta: <code>cd rh-fractal-frontend && npm install</code></li>
                             <li>Luego: <code>npm start</code></li>
-                            <li>Frontend: <strong>http://localhost:4200</strong></li>
+                            <li>Frontend: <strong>http://localhost:4201</strong></li>
                         </ul>
                     </div>
                 </div>
             </section>
 
             <section>
-                <h2>📊 Entidades de la Base de Datos</h2>
-                <table>
-                    <tr><th>Entidad</th><th>Tabla</th><th>Descripción</th></tr>
-                    <tr><td>Empleado</td><td>empleados</td><td>Información de empleados</td></tr>
-                    <tr><td>Departamento</td><td>departamentos</td><td>Departamentos</td></tr>
-                    <tr><td>Nomina</td><td>nominas</td><td>Gestión de nóminas</td></tr>
-                    <tr><td>Beneficio</td><td>beneficios</td><td>Beneficios</td></tr>
-                    <tr><td>Vacacion</td><td>vacaciones</td><td>Control de vacaciones</td></tr>
-                    <tr><td>InventarioEquipo</td><td>inventario_equipos</td><td>Equipos</td></tr>
-                </table>
+                <h2>💻 Menú de Navegación</h2>
+                <div class="info-box">
+                    <p>El sistema cuenta con <strong>6 módulos</strong> accesibles desde el menú:</p>
+                    <p style="margin-top:10px; font-size:1.2em;">
+                        <strong>Empleados | Departamentos | Nóminas | Beneficios | Vacaciones | Inventario</strong>
+                    </p>
+                </div>
             </section>
 
             <section>
                 <h2>🧪 Sistema de Testing</h2>
                 <ul>
-                    <li><strong>40 tests unitarios</strong> con Jasmine/Karma</li>
+                    <li><strong>Tests unitarios</strong> con Jasmine/Karma</li>
                     <li><strong>Tests E2E</strong> con Cypress</li>
-                    <li><strong>Testing Agent</strong> para generación automática de tests</li>
+                    <li><strong>Workflows GitHub Actions</strong> para CI/CD</li>
                 </ul>
                 <div class="info-box">
                     <strong>Comandos:</strong><br>
@@ -354,7 +472,7 @@
                 <h2>🔐 Seguridad</h2>
                 <ul>
                     <li><strong>Spring Security:</strong> Autenticación y autorización</li>
-                    <li><strong>CORS:</strong> Configurado para localhost:4200</li>
+                    <li><strong>CORS:</strong> Configurado para localhost:4201</li>
                     <li><strong>CSRF:</strong> Deshabilitado para desarrollo</li>
                     <li><strong>BCrypt:</strong> Disponible para contraseñas</li>
                     <li>Endpoints: <code>permitAll()</code> para desarrollo</li>
@@ -362,54 +480,22 @@
             </section>
 
             <section>
-                <h2>📈 Mejoras Propuestas</h2>
-                <div class="improvements-grid">
-                    <div class="improvement-card">
-                        <span class="badge badge-warning">Prioridad: Alta</span>
-                        <h4>🔧 Servicios Angular</h4>
-                        <p>Crear servicios dedicados (EmpleadoService, etc.) para separar lógica HTTP.</p>
-                    </div>
-                    <div class="improvement-card">
-                        <span class="badge badge-warning">Prioridad: Alta</span>
-                        <h4>📦 Modelos Compartidos</h4>
-                        <p>Crear módulo <code>src/app/models/</code> con interfaces TypeScript.</p>
-                    </div>
-                    <div class="improvement-card">
-                        <span class="badge badge-info">Prioridad: Media</span>
-                        <h4>🔗 Relaciones JPA</h4>
-                        <p>Implementar @OneToMany y @ManyToOne entre entidades.</p>
-                    </div>
-                    <div class="improvement-card">
-                        <span class="badge badge-info">Prioridad: Media</span>
-                        <h4>✅ Validación Reactive Forms</h4>
-                        <p>Implementar Reactive Forms con validaciones.</p>
-                    </div>
-                    <div class="improvement-card">
-                        <span class="badge badge-info">Prioridad: Media</span>
-                        <h4>🔑 Autenticación JWT</h4>
-                        <p>Implementar login con tokens JWT.</p>
-                    </div>
-                    <div class="improvement-card">
-                        <span class="badge badge-success">Prioridad: Baja</span>
-                        <h4>🗄️ Migración MySQL</h4>
-                        <p>Migrar de H2 a MySQL/PostgreSQL.</p>
-                    </div>
-                    <div class="improvement-card">
-                        <span class="badge badge-success">Prioridad: Baja</span>
-                        <h4>📚 Swagger API</h4>
-                        <p>Documentación automática con Swagger.</p>
-                    </div>
-                    <div class="improvement-card">
-                        <span class="badge badge-success">Prioridad: Baja</span>
-                        <h4>🎨 Mejoras UX</h4>
-                        <p>Spinners, manejo de errores, estados.</p>
-                    </div>
+                <h2>📈 Características Automáticas</h2>
+                <div class="success-box">
+                    <h3 style="margin-top:0;">🤖 Generación Automática al Crear Empleado</h3>
+                    <ol>
+                        <li><strong>Código de empleado:</strong> EMP-0001, EMP-0002, etc.</li>
+                        <li><strong>Nómina:</strong> Período actual, devengado = salario, deducciones = 10%, neto = devengado - deducciones</li>
+                        <li><strong>Inventario:</strong> Asigna laptop disponible o crea nueva automáticamente</li>
+                        <li><strong>Vacaciones:</strong> 25 días disponibles por defecto</li>
+                        <li><strong>Departamento:</strong> Agrega empleado a listaEmpleados y actualiza numeroEmpleados</li>
+                    </ol>
                 </div>
             </section>
 
             <section>
                 <h2>✅ Conclusión</h2>
-                <p>Arquitectura moderna y escalable:</p>
+                <p>Arquitectura moderna y escalable con vinculación completa:</p>
                 <ul>
                     <li><strong>Separación de responsabilidades:</strong> Capas separadas</li>
                     <li><strong>API REST:</strong> Comunicación JSON</li>
@@ -418,9 +504,10 @@
                     <li><strong>Standalone Components:</strong> Angular moderno</li>
                     <li><strong>Testing:</strong> Jasmine/Karma + Cypress</li>
                     <li><strong>H2 Database:</strong> Desarrollo rápido</li>
+                    <li><strong>Vinculación automática:</strong> Todo relacionado al crear un empleado</li>
                 </ul>
                 <div class="success-box" style="margin-top:20px;">
-                    <strong>✅ Estado:</strong> Proyecto funcional con 40 tests, datos de prueba cargados.
+                    <strong>✅ Estado:</strong> Proyecto funcional con datos de prueba cargados, vinculación completa entre módulos.
                 </div>
             </section>
         </div>
