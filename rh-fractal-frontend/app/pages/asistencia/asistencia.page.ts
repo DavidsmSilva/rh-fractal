@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AsistenciaComponent } from './asistencia.component';
+import { AsistenciaComponent } from '../../src/app/pages/asistencia/asistencia.component';
 
 @Component({
   selector: 'app-asistencia-page',

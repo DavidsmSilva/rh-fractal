@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ReclutamientoComponent } from './reclutamiento.component';
+import { ReclutamientoComponent } from '../../src/app/pages/reclutamiento/reclutamiento.component';
 
 @Component({
   selector: 'app-reclutamiento-page',
